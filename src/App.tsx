@@ -1,12 +1,16 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
+import MainMenu from './components/MainMenu/MainMenu';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>Personal Finance App</p>
-      </header>
+  return ( 
+    <div className="main">
+      <div className="main-sidebar">
+        <MainMenu />
+      </div>
+      <div className="main-pages">
+      
+      </div>
     </div>
   );
 }

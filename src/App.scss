@@ -1,0 +1,16 @@
+@import './variables/variables.scss'; 
+
+.main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+
+  .main-sidebar {
+    width: 17.5%;
+  }
+
+  .main-pages {
+    width: 87.5%;  
+  }
+
+}
