@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './MainMenu.scss';
 import { 
   Logo, 
@@ -14,10 +15,11 @@ import {
 
 interface Menu {
   handleMinimizeMenu: () => unknown,
-  isExpanded: boolean
+  isExpanded: boolean,
+  location: string
 }
 
-function MainMenu({handleMinimizeMenu, isExpanded}: Menu) {
+function MainMenu({handleMinimizeMenu, isExpanded, location}: Menu) {
   return (
     <div className={isExpanded ? 'main-container' : 'main-container minimized'}>
       <div className={isExpanded ?'sub-container-logo minimized' : 'sub-container-logo minimized'}>
@@ -27,36 +29,36 @@ function MainMenu({handleMinimizeMenu, isExpanded}: Menu) {
         />
       </div>
       <div className="sub-container-navPages">
-        <div className="navPages">
+        <Link to="/" className={location === '/' ? 'navigation active' : 'navigation'}>
           <BiSolidHome 
             id="icon" 
           />
           {isExpanded ? <p>Overview</p> : ''}
-        </div>
-        <div className="navPages">
+        </Link>
+        <Link to="/transactions" className={location === '/transactions' ?' navigation active' : 'navigation'}>
           <TbArrowsUpDown 
             id="icon" 
           />
           {isExpanded ? <p>Transactions</p> : ''}
-        </div>
-        <div className="navPages">
+        </Link>
+        <Link to="/budgets" className={location === '/budgets' ? 'navigation active' : 'navigation'}>
           <FaChartPie
             id="icon" 
           />
           {isExpanded ? <p>Budgets</p> : ''}
-        </div>
-        <div className="navPages">
+        </Link>
+        <Link to="/pots" className={location === '/pots' ? 'navigation active' : 'navigation'}>
           <TbReportMoney 
             id="icon" 
           />
           {isExpanded ? <p>Pots</p> : ''}
-        </div>
-        <div className="navPages">
+        </Link>
+        <Link to="/bills" className={location === '/bills' ? 'navigation active' : 'navigation'}>
           <FaMoneyCheck 
             id="icon" 
           />
           {isExpanded ? <p>Recurring Bills</p> : ''}
-        </div>
+        </Link>
       </div>
       <div className="sub-container-minMenu">
         {isExpanded ?
