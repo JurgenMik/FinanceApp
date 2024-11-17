@@ -2,20 +2,27 @@ import React from 'react';
 import './MainMenu.scss';
 import { 
   Logo, 
+  LogoSmall,
   BiSolidHome, 
   TbArrowsUpDown, 
   FaChartPie, 
   TbReportMoney, 
   FaMoneyCheck, 
-  PiArrowFatLinesLeftFill 
+  PiArrowFatLinesLeftFill,
+  PiArrowFatLinesRightFill 
 } from "../../assets";
 
-function MainMenu() {
+interface Menu {
+  handleMinimizeMenu: () => unknown,
+  isExpanded: boolean
+}
+
+function MainMenu({handleMinimizeMenu, isExpanded}: Menu) {
   return (
-    <div className="main-container">
-      <div className="sub-container-logo">
+    <div className={isExpanded ? 'main-container' : 'main-container minimized'}>
+      <div className={isExpanded ?'sub-container-logo minimized' : 'sub-container-logo minimized'}>
         <img 
-          src={Logo} 
+          src={isExpanded ? Logo : LogoSmall}
           alt="logo" 
         />
       </div>
@@ -24,38 +31,50 @@ function MainMenu() {
           <BiSolidHome 
             id="icon" 
           />
-          <p>Overview</p>
+          {isExpanded ? <p>Overview</p> : ''}
         </div>
         <div className="navPages">
           <TbArrowsUpDown 
             id="icon" 
           />
-          <p>Transactions</p>
+          {isExpanded ? <p>Transactions</p> : ''}
         </div>
         <div className="navPages">
           <FaChartPie
             id="icon" 
           />
-          <p>Budgets</p>
+          {isExpanded ? <p>Budgets</p> : ''}
         </div>
         <div className="navPages">
           <TbReportMoney 
             id="icon" 
           />
-          <p>Pots</p>
+          {isExpanded ? <p>Pots</p> : ''}
         </div>
         <div className="navPages">
           <FaMoneyCheck 
             id="icon" 
           />
-          <p>Recurring Bills</p>
+          {isExpanded ? <p>Recurring Bills</p> : ''}
         </div>
       </div>
       <div className="sub-container-minMenu">
-        <PiArrowFatLinesLeftFill 
-          id="minimize"
-         />
-        <p>Minimize Menu</p>
+        {isExpanded ?
+        <>
+          <PiArrowFatLinesLeftFill 
+            id="minimize"
+            onClick={handleMinimizeMenu}
+           />
+          <p>Minimize Menu</p>
+        </>
+        :
+        <> 
+          <PiArrowFatLinesRightFill
+            id="minimize"
+            onClick={handleMinimizeMenu}
+          />
+        </>
+        }
       </div>  
     </div>
   );
