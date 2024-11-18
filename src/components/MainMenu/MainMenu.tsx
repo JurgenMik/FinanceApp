@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './MainMenu.scss';
+import MenuLink from '../MenuLink/MenuLink';
 import { 
   Logo, 
   LogoSmall,
@@ -29,36 +29,41 @@ function MainMenu({handleMinimizeMenu, isExpanded, location}: Menu) {
         />
       </div>
       <div className="sub-container-navPages">
-        <Link to="/" className={location === '/' ? 'navigation active' : 'navigation'}>
-          <BiSolidHome 
-            id="icon" 
-          />
-          {isExpanded ? <p>Overview</p> : ''}
-        </Link>
-        <Link to="/transactions" className={location === '/transactions' ?' navigation active' : 'navigation'}>
-          <TbArrowsUpDown 
-            id="icon" 
-          />
-          {isExpanded ? <p>Transactions</p> : ''}
-        </Link>
-        <Link to="/budgets" className={location === '/budgets' ? 'navigation active' : 'navigation'}>
-          <FaChartPie
-            id="icon" 
-          />
-          {isExpanded ? <p>Budgets</p> : ''}
-        </Link>
-        <Link to="/pots" className={location === '/pots' ? 'navigation active' : 'navigation'}>
-          <TbReportMoney 
-            id="icon" 
-          />
-          {isExpanded ? <p>Pots</p> : ''}
-        </Link>
-        <Link to="/bills" className={location === '/bills' ? 'navigation active' : 'navigation'}>
-          <FaMoneyCheck 
-            id="icon" 
-          />
-          {isExpanded ? <p>Recurring Bills</p> : ''}
-        </Link>
+        <MenuLink
+          path={'/'}
+          isExpanded={isExpanded}
+          page={'Overview'}
+          Icon={BiSolidHome}
+          location={location} 
+        />
+        <MenuLink
+          path={'/transactions'}
+          isExpanded={isExpanded}
+          page={'Transactions'}
+          Icon={TbArrowsUpDown}
+          location={location} 
+        />
+        <MenuLink
+          path={'/budgets'}
+          isExpanded={isExpanded}
+          page={'Budgets'}
+          Icon={FaChartPie}
+          location={location}
+        />
+        <MenuLink
+          path={'/pots'}
+          isExpanded={isExpanded}
+          page={'Pots'}
+          Icon={TbReportMoney}
+          location={location}
+        />
+        <MenuLink
+          path={'/bills'}
+          isExpanded={isExpanded}
+          page={'Bills'}
+          Icon={FaMoneyCheck}
+          location={location}    
+        />
       </div>
       <div className="sub-container-minMenu">
         {isExpanded ?
