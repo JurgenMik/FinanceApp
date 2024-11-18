@@ -31,14 +31,14 @@ function App() {
     <>
       {isDefinedRoute ? 
         <div className="main">
-          <div className="main-sidebar">
+          <div className={isExpanded ? 'main-sidebar' : 'main-sidebar minimized'}>
             <MainMenu 
               handleMinimizeMenu={handleMinimizeMenu}
               location={location.pathname}
               isExpanded={isExpanded}
             />
            </div>
-           <div className="main-pages">
+           <div className={isExpanded ? 'main-pages' : 'main-pages minimized'}>
               <Routes>
                 <Route path="/" element={<Overview />} />
                 <Route path="/Bills" element={<Bills />} />

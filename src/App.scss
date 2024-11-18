@@ -6,11 +6,20 @@
     display: flex;
 
   .main-sidebar {
-    width: 17.5%;
+    width: 22.5%;
+
+    &.minimized {
+      width: 12.5%;  
+    }
   }
 
   .main-pages {
-    width: 87.5%;  
+    width: 87.5%;
+    transition: width 0.4s ease; 
+
+    &.minimized {
+      width: 90%; 
+    }
   }
 
 }
