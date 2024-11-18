@@ -1,0 +1,11 @@
+@import './variables/variables.scss';
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: $FontPrimary;
+    font-weight: 600;
+}
