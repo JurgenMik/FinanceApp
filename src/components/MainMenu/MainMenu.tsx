@@ -13,13 +13,13 @@ import {
   PiArrowFatLinesRightFill 
 } from "../../assets";
 
-interface Menu {
+interface MenuProps {
   handleMinimizeMenu: () => unknown,
   isExpanded: boolean,
   location: string
 }
 
-function MainMenu({handleMinimizeMenu, isExpanded, location}: Menu) {
+function MainMenu({handleMinimizeMenu, isExpanded, location}: MenuProps) {
   return (
     <div className={isExpanded ? 'main-container' : 'main-container minimized'}>
       <div className={isExpanded ?'sub-container-logo minimized' : 'sub-container-logo minimized'}>

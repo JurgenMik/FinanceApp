@@ -1,0 +1,28 @@
+@import '../../variables/variables.scss';
+
+.finance {
+    width: 30%;
+    height: 7.5rem;
+    background-color: $White;
+    border-radius: 0.75rem;
+    padding-left: 2rem;
+
+    h5 {
+        color: $DarkGrey;
+        font-weight: 300;
+    }
+
+    p {
+        font-size: 2rem;
+        font-weight: 600;
+    }
+}
+
+.sub-container-balance {
+    background-color: $DarkGrey;
+    color: $White;
+
+    h5 {
+        color: $White;
+    }
+}
