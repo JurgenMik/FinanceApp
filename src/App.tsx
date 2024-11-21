@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes, useLocation } from "react-router-dom";
+import 'rsuite/Loader/styles/index.css';
+import { Loader } from 'rsuite';
 import defaultRoutes from './utils/index'
 import './App.scss';
 import MainMenu from './components/MainMenu/MainMenu';
@@ -45,7 +47,7 @@ function App() {
     }
   }
 
-  if (isLoading) { return <div>Loading...</div> }
+  if (isLoading) { return <Loader size={'md'} center content="loading..." vertical /> }
 
   return (
     <>
