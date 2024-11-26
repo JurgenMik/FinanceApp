@@ -1,11 +1,6 @@
 import React from 'react';
 import './Balance.scss';
-
-interface BalanceProps {
-    styleProp: string,
-    balance: number,
-    heading: string
-}
+import { BalanceProps } from '../../interfaces/index';
 
 function Balance({styleProp, balance, heading}: BalanceProps) {
     return (

@@ -12,7 +12,7 @@ import Pots from './pages/pots/Pots';
 import Transactions from './pages/transactions/Transactions';
 import NotFound from './pages/notfound/NotFound';
 import mockData from './mock/transactions.json';
-import { FinanceProps } from './interfaces/index';
+import type { FinanceProps } from './interfaces/index';
 
 function App() {
 

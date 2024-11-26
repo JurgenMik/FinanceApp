@@ -1,14 +1,7 @@
 import React from 'react';
 import './MenuLink.scss';
 import { Link } from 'react-router-dom';
-
-interface LinkProps {
-  isExpanded: boolean,
-  path: string,
-  page: string,
-  location: string,
-  Icon: React.ElementType
-}
+import { LinkProps } from '../../interfaces/index';
 
 function MenuLink({path, isExpanded, page, Icon, location}: LinkProps) {
   return (

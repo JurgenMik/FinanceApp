@@ -29,10 +29,40 @@ interface Budget {
     maximum: number;
     theme: string; 
 };
+
+export interface Savings {
+    resources: Pot[];
+};
   
-interface Pot {
+export interface Pot {
     name: string;
     target: number;
     total: number;
     theme: string; 
 };
+
+export interface ViewDetailsProps {
+    text: string,
+    linkTo: string
+};
+
+export interface BalanceProps {
+    styleProp: string,
+    balance: number,
+    heading: string
+};
+
+export interface MenuProps {
+    handleMinimizeMenu: () => unknown,
+    isExpanded: boolean,
+    location: string
+};
+
+export interface LinkProps {
+    isExpanded: boolean,
+    path: string,
+    page: string,
+    location: string,
+    Icon: React.ElementType     
+};
+

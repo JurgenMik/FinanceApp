@@ -1,7 +1,7 @@
 import React from 'react';
 import './Finances.scss';
 import Balance from '../../../../components/Balance/Balance';
-import { HoldingsProps } from '../../../../interfaces/index';
+import type { HoldingsProps } from '../../../../interfaces/index';
 
 function Finances({balance}: HoldingsProps) {
   return (

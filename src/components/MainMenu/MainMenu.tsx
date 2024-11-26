@@ -1,6 +1,7 @@
 import React from 'react';
 import './MainMenu.scss';
 import MenuLink from '../MenuLink/MenuLink';
+import { MenuProps } from '../../interfaces/index';
 import { 
   Logo, 
   LogoSmall,
@@ -13,15 +14,9 @@ import {
   PiArrowFatLinesRightFill 
 } from "../../assets";
 
-interface MenuProps {
-  handleMinimizeMenu: () => unknown,
-  isExpanded: boolean,
-  location: string
-}
-
 function MainMenu({handleMinimizeMenu, isExpanded, location}: MenuProps) {
   return (
-    <div className={isExpanded ? 'main-container' : 'main-container minimized'}>
+    <div className={isExpanded ? 'main-container-menu' : 'main-container-menu minimized'}>
       <div className={isExpanded ?'sub-container-logo minimized' : 'sub-container-logo minimized'}>
         <img 
           src={isExpanded ? Logo : LogoSmall}

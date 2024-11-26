@@ -1,0 +1,19 @@
+@import '../../variables/variables.scss';
+
+.main-container-viewDetails {
+    display: flex;
+    text-decoration: none;
+    font-weight: 300;
+    color: $MedGrey;
+    align-items: center;
+    font-size: 0.95rem;
+
+    #arrow {
+        font-size: 1.25rem;
+    }
+
+    &:hover {
+        color: $DarkGrey;
+    }
+}
+

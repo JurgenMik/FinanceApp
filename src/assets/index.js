@@ -4,3 +4,4 @@ export { PiArrowFatLinesLeftFill, PiArrowFatLinesRightFill } from "react-icons/p
 export { BiSolidHome } from "react-icons/bi";
 export { TbReportMoney, TbArrowsUpDown } from "react-icons/tb";
 export { FaMoneyCheck, FaChartPie } from "react-icons/fa";
+export { MdArrowRight } from "react-icons/md";
