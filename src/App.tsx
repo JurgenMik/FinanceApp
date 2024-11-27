@@ -47,7 +47,7 @@ function App() {
     }
   }
 
-  if (isLoading) { return <Loader size={'md'} center content="loading..." vertical /> }
+  if (isLoading) { return <Loader size={'lg'} center content="loading..." vertical /> }
 
   return (
     <>
