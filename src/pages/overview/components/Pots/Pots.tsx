@@ -26,7 +26,10 @@ function Pots({resources}: Savings) {
             <p>${saved}</p>
           </div>
         </div>
-        <Categories resources={resources} />
+        <Categories 
+          resources={resources}
+          styleProp={'1.5fr 1.5fr'} 
+        />
       </div>
     </div>
   );

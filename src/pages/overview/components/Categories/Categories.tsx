@@ -1,14 +1,16 @@
 import React from 'react';
 import './Categories.scss';
-import type { Savings } from '../../../../interfaces/index';
+import type { Savings, Pot } from '../../../../interfaces/index';
 
-function Categories({resources}: Savings) {
+function Categories({resources, styleProp}: Savings | any) {
 
   const showLimited = resources.slice(0, resources.length -1);
   
   return ( 
-    <div className="main-container-categories">
-      {showLimited.map((resource) => (
+    <div className="main-container-categories"
+      style={{gridTemplateColumns: styleProp}}
+    >
+      {showLimited.map((resource: Pot) => (
         <div className="container-category" key={resource.name}>
           <span 
             id="theme"
