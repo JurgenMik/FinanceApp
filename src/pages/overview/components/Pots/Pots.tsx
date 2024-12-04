@@ -11,13 +11,11 @@ function Pots({resources}: Savings) {
 
   return ( 
     <div className="main-container-pots">
-      <div className="sub-container-pots-heading">
-        <h2>Pots</h2>
-        <ViewDetails 
-          text={'See Details'} 
-          linkTo={'/pots'}
-        />
-      </div>
+      <ViewDetails 
+        header={'Pots'}
+        text={'See Details'} 
+        linkTo={'/pots'}
+      />
       <div className="sub-container-pots">
         <div className="sub-container-saved">
           <TbReportMoney id="pots" />
@@ -29,6 +27,7 @@ function Pots({resources}: Savings) {
         <Categories 
           resources={resources}
           styleProp={'1.5fr 1.5fr'} 
+          category={'pots'}
         />
       </div>
     </div>

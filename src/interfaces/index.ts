@@ -14,8 +14,12 @@ interface Funds {
     income: number;
     expenses: number;
 };
+
+export interface TransactionsState {
+    transactions: Transaction[];
+};
   
-interface Transaction {
+export interface Transaction {
     avatar: string;
     name: string;
     category: string;
@@ -23,8 +27,12 @@ interface Transaction {
     amount: number;
     recurring: boolean;
 };
+
+export interface Allocations {
+    resources: Budget[];
+};
   
-interface Budget {
+export interface Budget {
     category: string;
     maximum: number;
     theme: string; 
@@ -42,6 +50,7 @@ export interface Pot {
 };
 
 export interface ViewDetailsProps {
+    header: string,
     text: string,
     linkTo: string
 };
@@ -65,4 +74,3 @@ export interface LinkProps {
     location: string,
     Icon: React.ElementType     
 };
-

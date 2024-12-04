@@ -1,18 +1,11 @@
 @import '../../../../variables/variables.scss';
 
 .main-container-pots {
-    width: 40%;
+    width: 90%;
     height: 15rem;
     background-color: $White;
     border-radius: 0.75rem;
     padding: 0 2rem;
-
-    .sub-container-pots-heading {
-        display: flex;
-        height: 5rem;
-        justify-content: space-between;
-        align-items: center;
-    }
 
     .sub-container-pots {
         width: 100%;

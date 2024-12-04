@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom';
 import { MdArrowRight } from '../../assets/index';
 import { ViewDetailsProps } from '../../interfaces';
 
-function ViewDetails({text, linkTo}: ViewDetailsProps) {
+function ViewDetails({header, text, linkTo}: ViewDetailsProps) {
   return ( 
-    <Link className="main-container-viewDetails" to={linkTo}>
-      <p>{text}</p>
-      <MdArrowRight id="arrow" />
-    </Link>
+    <div className="main-container-heading">
+      <h2>{header}</h2>
+      <Link className="sub-container-viewDetails" to={linkTo}>
+        <p>{text}</p>
+        <MdArrowRight id="arrow" />
+      </Link>
+    </div>
   );
 }
 

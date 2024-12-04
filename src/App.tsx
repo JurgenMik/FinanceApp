@@ -13,9 +13,12 @@ import Transactions from './pages/transactions/Transactions';
 import NotFound from './pages/notfound/NotFound';
 import mockData from './mock/transactions.json';
 import type { FinanceProps } from './interfaces/index';
+import { useDispatch } from 'react-redux';
+import { setTransactions } from './store/reducers';
 
 function App() {
 
+  const dispatch = useDispatch();
   const location = useLocation();
 
   const isDefinedRoute = defaultRoutes.includes(location.pathname);
@@ -35,6 +38,8 @@ function App() {
       if (mockData) { 
         setIsLoading(false);
       }
+      
+      dispatch(setTransactions(mockData.transactions))
     }, 3000);
   }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import './Overview.scss';
 import Finances from './components/Finances/Finances';
 import Pots from './components/Pots/Pots';
+import Budgets from './components/Budgets/Budgets';
 import type { FinanceProps } from '../../interfaces/index';
 
 function Overview({finances}: FinanceProps | any) {
@@ -13,6 +14,7 @@ function Overview({finances}: FinanceProps | any) {
       <Finances balance={finances.balance} />
       <div className="sub-container-overview">
         <Pots resources={finances.pots} />
+        <Budgets resources={finances.budgets} />
       </div>
     </div>
   );

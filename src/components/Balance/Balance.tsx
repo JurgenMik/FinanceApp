@@ -7,7 +7,7 @@ function Balance({styleProp, balance, heading}: BalanceProps) {
       <>
         <div className={`${styleProp} finance`}>
           <h5>{heading}</h5>  
-          <p>${balance}</p>  
+          <p>${balance.toFixed(2)}</p>  
         </div>
       </>
     )    

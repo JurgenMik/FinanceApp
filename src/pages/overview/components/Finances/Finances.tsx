@@ -5,7 +5,7 @@ import type { HoldingsProps } from '../../../../interfaces/index';
 
 function Finances({balance}: HoldingsProps) {
   return (
-    <div className="main-container-fin">
+    <div className="main-container-finances">
       <Balance 
         styleProp={'sub-container-balance'} 
         balance={balance.current} 
