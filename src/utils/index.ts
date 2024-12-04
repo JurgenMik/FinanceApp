@@ -2,3 +2,7 @@ const defaultRoutes: string[] = ['/transactions', '/pots', '/bills', '/', '/budg
 
 export default defaultRoutes;
 
+export const handleCalculateTotals = (entries: unknown[], unit: string): number => {
+  return entries.reduce((total: number, entry: any) => total + entry[unit], 0)
+};
+

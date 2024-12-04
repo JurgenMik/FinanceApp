@@ -3,11 +3,12 @@ import './Pots.scss';
 import ViewDetails from '../../../../components/ViewDetails/ViewDetails';
 import Categories from '../Categories/Categories';
 import { TbReportMoney } from '../../../../assets/index';
-import type { Pot, Savings } from '../../../../interfaces/index';
+import type { Savings } from '../../../../interfaces/index';
+import { handleCalculateTotals } from '../../../../utils';
 
 function Pots({resources}: Savings) {
 
-  const saved = resources.reduce((total: number, pot: Pot) => total + pot.total, 0);
+  const saved = handleCalculateTotals(resources, 'total');
 
   return ( 
     <div className="main-container-pots">

@@ -8,6 +8,7 @@ import {
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import type { Transaction, TransactionsState, Budget, Allocations } from '../../interfaces/index';
+import { handleCalculateTotals } from '../../utils';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -43,7 +44,7 @@ function Chart({resources}: Allocations) {
   // rem look at transaction categories that are allocated in budgets && within a month range from august
 
   const calculateTotalSummary = (spendings: Transaction[]): number => {
-    return Math.abs(spendings.reduce((total: number, transaction: Transaction) => total + transaction.amount, 0));
+    return Math.abs(handleCalculateTotals(spendings, 'amount'));
   }
 
   const handleCalcSpendingSummary = (): number => {
@@ -64,8 +65,8 @@ function Chart({resources}: Allocations) {
 
     return calculateTotalSummary(recentSpendings);
   }
-
-  const spendingLimit = resources.reduce((total: number, budget: Budget) => total + budget.maximum, 0);
+  
+  const spendingLimit = handleCalculateTotals(resources, 'maximum');
   const spendingSummary: number = handleCalcSpendingSummary();
   
   return (
