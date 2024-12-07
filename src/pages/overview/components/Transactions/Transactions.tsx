@@ -41,7 +41,12 @@ function Transactions() {
                     <p
                       style={{color: Math.sign(transaction.amount) === 1 ? '#277C78' : ''}}
                     >
-                      ${transaction.amount}
+                      {Math.sign(transaction.amount) === 1 
+                      ? 
+                        `+ $${Math.abs(transaction.amount).toFixed(2)}` 
+                      : 
+                        `- $${Math.abs(transaction.amount).toFixed(2)}`
+                      }  
                     </p>    
                     <p id="date">
                       {handleFormatDate(transaction.date)}
