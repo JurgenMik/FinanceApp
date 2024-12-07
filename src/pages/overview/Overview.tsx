@@ -3,6 +3,7 @@ import './Overview.scss';
 import Finances from './components/Finances/Finances';
 import Pots from './components/Pots/Pots';
 import Budgets from './components/Budgets/Budgets';
+import Bills from './components/Bills/Bills';
 import type { FinanceProps } from '../../interfaces/index';
 
 function Overview({finances}: FinanceProps | any) {
@@ -13,8 +14,13 @@ function Overview({finances}: FinanceProps | any) {
       </h1>  
       <Finances balance={finances.balance} />
       <div className="sub-container-overview">
-        <Pots resources={finances.pots} />
-        <Budgets resources={finances.budgets} />
+        <div>
+          <Pots resources={finances.pots} />
+        </div>
+        <div>
+          <Budgets resources={finances.budgets} />
+          <Bills />
+        </div>  
       </div>
     </div>
   );

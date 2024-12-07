@@ -74,3 +74,9 @@ export interface LinkProps {
     location: string,
     Icon: React.ElementType     
 };
+
+export interface RecurringBillsProps {
+    title: string,
+    amount: string,
+    theme: string
+};
