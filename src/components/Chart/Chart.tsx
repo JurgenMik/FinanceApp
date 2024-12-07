@@ -40,17 +40,15 @@ function Chart({resources}: Allocations) {
   };
 
   const chartOptions = { responsive: true };
-
-  // rem look at transaction categories that are allocated in budgets && within a month range from august
-
+  
   const calculateTotalSummary = (spendings: Transaction[]): number => {
     return Math.abs(handleCalculateTotals(spendings, 'amount'));
   }
 
-  const handleCalcSpendingSummary = (): number => {
+  const handleCalcSpendingSummary = (): string => {
     const targetMonth = 7;
-    const startDate   = new Date(2024, targetMonth - 1, 14);
-    const endDate     = new Date(2024, targetMonth, 14);
+    const startDate   = new Date(2024, targetMonth - 1, 2);
+    const endDate     = new Date(2024, targetMonth, 31);
 
     const budgetCategories = resources.map((budget: Budget) => budget.category);
 
@@ -63,11 +61,11 @@ function Chart({resources}: Allocations) {
              !transaction.recurring;
     });
 
-    return calculateTotalSummary(recentSpendings);
+    return calculateTotalSummary(recentSpendings).toFixed(0);
   }
   
-  const spendingLimit = handleCalculateTotals(resources, 'maximum');
-  const spendingSummary: number = handleCalcSpendingSummary();
+  const spendingLimit   = handleCalculateTotals(resources, 'maximum');
+  const spendingSummary = handleCalcSpendingSummary();
   
   return (
     <>
