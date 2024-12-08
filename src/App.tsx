@@ -12,14 +12,17 @@ import Pots from './pages/pots/Pots';
 import Transactions from './pages/transactions/Transactions';
 import NotFound from './pages/notfound/NotFound';
 import mockData from './mock/transactions.json';
-import type { FinanceProps } from './interfaces/index';
-import { useDispatch } from 'react-redux';
+import type { FinanceProps, TransactionsState } from './interfaces/index';
+import { useDispatch, useSelector } from 'react-redux';
 import { setTransactions } from './store/reducers';
+import { setRecurringBills} from './store/reducers';
 
 function App() {
 
   const dispatch = useDispatch();
   const location = useLocation();
+
+  const transactionsState = useSelector((state: {transactions: TransactionsState}) => state.transactions);
 
   const isDefinedRoute = defaultRoutes.includes(location.pathname);
 
@@ -30,7 +33,7 @@ function App() {
   useEffect(() => {
     handleFetchMockData();
   }, []);
-
+  
   const handleFetchMockData = () => {
     setTimeout(() => {
       setFinanceData(mockData);
@@ -39,9 +42,42 @@ function App() {
         setIsLoading(false);
       }
       
-      dispatch(setTransactions(mockData.transactions))
+      dispatch(setTransactions(mockData.transactions));
+
+       handleRecurringBillsByCat('paid');
+       handleRecurringBillsByCat('due');
+       handleRecurringBillsByCat('upcoming');
     }, 3000);
   }
+  
+  const handleRecurringBillsByCat = (type: string) => {
+    const targetMonth = 7; 
+    const fromDate    = new Date(2024, targetMonth - 1, 2);
+    const currentDate = new Date(2024, targetMonth - 1, 26);
+    const dueRange    = new Date(2024, targetMonth, 4);
+
+    const bills = transactionsState.transactions.filter((transaction) => {
+        const transactionDate = new Date(transaction.date); 
+
+        if (type === 'paid') { 
+            return (
+                 transaction.recurring       &&
+                 transactionDate >= fromDate && 
+                 transactionDate <= currentDate
+            );
+        } 
+        else if (type === 'due') {
+            return (
+                transaction.recurring         &&
+                transactionDate > currentDate &&
+                transactionDate <= dueRange
+            );
+        } 
+        else { return transaction.recurring &&  transactionDate > dueRange; }
+    });
+
+    dispatch(setRecurringBills({key: type, data: bills}));
+};
 
   const handleMinimizeMenu = () => {
     if (isExpanded) {

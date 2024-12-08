@@ -80,3 +80,7 @@ export interface RecurringBillsProps {
     amount: string,
     theme: string
 };
+
+export interface RecurringBillsState {
+    [key: string]: Transaction[];
+};
