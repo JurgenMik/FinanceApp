@@ -1,0 +1,14 @@
+.main-container-overview {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+
+    .sub-container-overview {
+        width: 100%;
+        height: 100%;
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 1rem;
+    }
+}

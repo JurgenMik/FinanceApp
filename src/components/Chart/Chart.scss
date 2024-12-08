@@ -1,0 +1,16 @@
+@import '../../variables/variables.scss';
+
+#limit {
+    position: absolute;
+    top: 4.5rem;
+    font-weight: 800;
+    font-size: 1.75rem;
+}
+
+#limitTotal {
+    position: absolute;
+    top: 8rem;
+    font-size: 0.85rem;
+    color: $MedGrey;
+    font-weight: 300;
+}

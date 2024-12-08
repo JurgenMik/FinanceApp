@@ -4,6 +4,7 @@
     width: 100%;
     min-height: 100vh;
     display: flex;
+    background-color: $LightBeige;
 
   .main-sidebar {
     width: 22.5%;
@@ -22,4 +23,10 @@
     }
   }
 
+}
+
+#heading {
+  height: 5rem;
+  display: flex;
+  align-items: center;
 }

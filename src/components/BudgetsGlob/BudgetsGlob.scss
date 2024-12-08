@@ -1,0 +1,15 @@
+@import '../../variables/variables.scss';
+
+.main-container-budgetsGlob {
+    width: 100%;
+    height: 65%;
+    display: flex;
+    justify-content: space-between;
+
+    .sub-container-budgetsGlob-chart {
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+}
