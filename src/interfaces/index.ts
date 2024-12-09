@@ -84,3 +84,15 @@ export interface RecurringBillsProps {
 export interface RecurringBillsState {
     [key: string]: Transaction[];
 };
+
+export interface BillSummaryCategory {
+    bills: number;
+    amount: number;
+}
+
+export interface BillSummaryProps {
+    due: BillSummaryCategory;
+    paid: BillSummaryCategory;
+    upcoming: BillSummaryCategory;
+}
+

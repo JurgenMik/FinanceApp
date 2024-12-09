@@ -27,7 +27,7 @@ const reducerRecurringBills = createSlice({
   initialState: initRecurringBillsSate,
   reducers: {
     setRecurringBills(state, action) {
-      const { key, data } = action.payload; 
+      const { key, data } = action.payload;
 
       if (key in state) { 
         state[key] = data; 

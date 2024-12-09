@@ -33,6 +33,12 @@ function App() {
   useEffect(() => {
     handleFetchMockData();
   }, []);
+
+  useEffect(() => {
+    if (transactionsState.transactions.length > 0) {
+      ['paid', 'due', 'upcoming'].forEach((type) => handleRecurringBillsByCat(type));
+    }
+  }, [transactionsState.transactions]);
   
   const handleFetchMockData = () => {
     setTimeout(() => {
@@ -43,10 +49,6 @@ function App() {
       }
       
       dispatch(setTransactions(mockData.transactions));
-
-       handleRecurringBillsByCat('paid');
-       handleRecurringBillsByCat('due');
-       handleRecurringBillsByCat('upcoming');
     }, 3000);
   }
   

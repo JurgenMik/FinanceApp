@@ -1,9 +1,10 @@
 import React from 'react';
 import './Bills.scss';
-import TotalBills from './components/TotalBills/TotalBills';
 import { useSelector } from 'react-redux';
 import type { RecurringBillsState } from '../../interfaces';
 import { handleCalculateTotals } from '../../utils';
+import TotalBills from './components/TotalBills/TotalBills';
+import BillSummary from './components/BillSummary/BillSummary';
 
 function Bills() {
 
@@ -23,6 +24,11 @@ function Bills() {
       <div className="sub-container-rec-bills">
         <div>
           <TotalBills total={total} />
+          <BillSummary 
+            due={{amount: totalDue, bills: recurringBillsState.due.length}} 
+            paid={{amount: totalPaid, bills: recurringBillsState.paid.length}}
+            upcoming={{amount: totalUpcoming, bills: recurringBillsState.upcoming.length}} 
+          />
         </div>
         <div>
          
