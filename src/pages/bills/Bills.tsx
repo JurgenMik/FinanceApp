@@ -5,6 +5,7 @@ import type { RecurringBillsState } from '../../interfaces';
 import { handleCalculateTotals } from '../../utils';
 import TotalBills from './components/TotalBills/TotalBills';
 import BillSummary from './components/BillSummary/BillSummary';
+import ViewBills from './components/ViewBills/ViewBills';
 
 function Bills() {
 
@@ -15,7 +16,7 @@ function Bills() {
   const totalUpcoming = handleCalculateTotals(recurringBillsState.upcoming, 'amount');
 
   const total = Math.abs(totalDue + totalPaid + totalUpcoming).toFixed(2);
-
+  
   return ( 
     <div className="main-container-rec-bills">
       <h1 id="heading">
@@ -31,7 +32,11 @@ function Bills() {
           />
         </div>
         <div>
-         
+          <ViewBills 
+            due={recurringBillsState.due}
+            paid={recurringBillsState.paid} 
+            upcoming={recurringBillsState.upcoming}  
+          /> 
         </div>
       </div>
     </div>

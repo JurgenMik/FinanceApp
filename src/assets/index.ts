@@ -3,5 +3,6 @@ export { default as LogoSmall } from "./images/logo/logo-small.svg";
 export { PiArrowFatLinesLeftFill, PiArrowFatLinesRightFill } from "react-icons/pi";
 export { BiSolidHome } from "react-icons/bi";
 export { TbReportMoney, TbArrowsUpDown } from "react-icons/tb";
-export { FaMoneyCheck, FaChartPie } from "react-icons/fa";
+export { FaMoneyCheck, FaChartPie, FaCheckCircle } from "react-icons/fa";
 export { MdArrowRight } from "react-icons/md";
+export { FaCircleExclamation } from "react-icons/fa6";
