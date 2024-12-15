@@ -22,6 +22,7 @@ function MappingControls({placeholder, setSearch, setSort, setFilter}: MappingCo
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => 
             setSearch(e.target.value)
           }
+          name="search"
         />
         <IoIosSearch 
           id="search" 
@@ -35,6 +36,7 @@ function MappingControls({placeholder, setSearch, setSort, setFilter}: MappingCo
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => 
             setSort(e.target.value)
           }
+          name="sort"
         >
           {handlePopulateSelectOpt(sortOptions)} 
         </select>
@@ -49,6 +51,7 @@ function MappingControls({placeholder, setSearch, setSort, setFilter}: MappingCo
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) => 
                 setFilter?.(e.target.value)
               }
+              name="filter"
             >
               {handlePopulateSelectOpt(filterOptions)}    
             </select>
