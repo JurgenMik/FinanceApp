@@ -71,7 +71,10 @@ function ViewBills({due, paid, upcoming, search, sort}: RecurringBillsState | an
             return (
               <div className="container-content" key={bill.name + bill.date}>
                 <div className="bill-source">
-                  <img src={bill.avatar} />
+                  <img 
+                    src={bill.avatar} 
+                    alt="avatar" 
+                  />
                   <h2>{bill.name}</h2>
                 </div>
                 <div className="bill-details">

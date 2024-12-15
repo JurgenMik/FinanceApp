@@ -24,7 +24,10 @@ function ViewTransactions() {
                 key={transaction.category + transaction.date}
               >
                 <div className="transaction-source">
-                  <img src={transaction.avatar} />
+                  <img 
+                    src={transaction.avatar} 
+                    alt="avatar" 
+                  />
                   <h2>{transaction.name}</h2>
                 </div>
                 <div className="transaction-details">
