@@ -100,5 +100,6 @@ export interface MappingControlsProps {
     placeholder: string;
     setSearch: (value: string) => void;
     setSort: (value: string) => void;
+    setFilter: ((value: string) => void) | null;
 };
 
