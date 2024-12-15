@@ -1,0 +1,40 @@
+@import '../../variables/variables.scss';
+
+.main-container-not-found {
+    width: 100%;
+    background-color: $LightBeige;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    span {
+        background-color: $DarkGrey;
+        width: 20rem;
+        height: 15rem; 
+        border-radius: 0.75rem;  
+        display: flex;
+        justify-content: center;
+
+        img {
+            width: 15rem;
+            height: 15rem;
+        }
+    }
+   
+    h1 {
+        font-weight: 500;
+    }
+
+    #return {
+        text-decoration: none;
+        color: $LightGrey;
+        font-weight: 300;
+
+        &:hover {
+            color: $Gold;
+        }
+    }  
+
+}
