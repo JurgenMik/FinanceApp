@@ -56,27 +56,49 @@ export interface ViewDetailsProps {
 };
 
 export interface BalanceProps {
-    styleProp: string,
-    balance: number,
-    heading: string
+    styleProp: string;
+    balance: number;
+    heading: string;
 };
 
 export interface MenuProps {
-    handleMinimizeMenu: () => unknown,
-    isExpanded: boolean,
-    location: string
+    handleMinimizeMenu: () => unknown;
+    isExpanded: boolean;
+    location: string;
 };
 
 export interface LinkProps {
-    isExpanded: boolean,
-    path: string,
-    page: string,
-    location: string,
-    Icon: React.ElementType     
+    isExpanded: boolean;
+    path: string;
+    page: string;
+    location: string;
+    Icon: React.ElementType;   
 };
 
 export interface RecurringBillsProps {
-    title: string,
-    amount: string,
-    theme: string
+    title: string;
+    amount: string;
+    theme: string;
 };
+
+export interface RecurringBillsState {
+    [key: string]: Transaction[];
+};
+
+export interface BillSummaryCategory {
+    bills: number;
+    amount: number;
+};
+
+export interface BillSummaryProps {
+    due: BillSummaryCategory;
+    paid: BillSummaryCategory;
+    upcoming: BillSummaryCategory;
+};
+
+export interface MappingControlsProps {
+    placeholder: string;
+    setSearch: (value: string) => void;
+    setSort: (value: string) => void;
+};
+

@@ -8,4 +8,20 @@ body {
     overflow: hidden;
     font-family: $FontPrimary;
     font-weight: 600;
+
+    ::-webkit-scrollbar {
+        width: 0.70rem;
+        height: 0;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: $DimGrey; 
+        border-radius: 0.5rem; 
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: $MedGrey;
+        border-radius: 10px; 
+        border: 0.15rem solid $White;
+    }
 }

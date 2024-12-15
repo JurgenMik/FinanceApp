@@ -1,0 +1,33 @@
+@import '../../../../variables/variables.scss';
+
+.main-container-total-bills {
+    height: 12.5rem;
+    width: 100%;
+    background-color: $DarkGrey;
+    border-radius: 0.75rem;
+    padding: 0 2rem;
+    color: $White;
+
+    #icon-bill {
+        font-size: 2.25rem;
+        margin-top: 1.75rem;
+    }
+
+    .sub-container-total-bills {
+        height: 7.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      
+        h1 {
+            font-size: 0.90rem;
+            font-weight: 300;
+        }
+
+        p {
+            margin: 0;
+            font-size: 2rem;
+        }
+    }
+
+}

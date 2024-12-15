@@ -55,7 +55,7 @@ function MainMenu({handleMinimizeMenu, isExpanded, location}: MenuProps) {
         <MenuLink
           path={'/bills'}
           isExpanded={isExpanded}
-          page={'Bills'}
+          page={'Recurring bills'}
           Icon={FaMoneyCheck}
           location={location}    
         />

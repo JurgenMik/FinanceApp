@@ -4,7 +4,6 @@
     width: 75%;
     height: 4rem;
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     padding-left: 2rem;
     text-decoration: none;
@@ -21,8 +20,6 @@
     &.active {
         background-color: $White;
         color: $DarkGrey;
-        border-top-right-radius: 1rem;
-        border-bottom-right-radius: 1rem;
         border-left: 0.25rem solid $Green;
         font-weight: 800;
 

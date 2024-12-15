@@ -1,0 +1,14 @@
+.main-container-rec-bills {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+
+    .sub-container-rec-bills {
+        width: 100%;
+        height: 100%;
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: 20% 60%;
+        gap: 6rem;
+    }
+}

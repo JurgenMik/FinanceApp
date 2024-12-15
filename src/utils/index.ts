@@ -11,3 +11,21 @@ export const handleFormatDate = (date: string): string => {
     {day: '2-digit', month: 'long', year: 'numeric'}).format(new Date(date));
 };
 
+export const handleBillingDateFormat = (date: Date): string => {
+  const day = date.getDate();
+
+  const getDaySuffix = (day: number) => {
+    if (day > 3 && day < 21) return 'th';
+
+    switch (day % 10) {
+      case 1: return 'st';
+      case 2: return 'nd';
+      case 3: return 'rd';
+
+      default: return 'th';
+    }
+  };
+
+  return `Monthly - ${day}${getDaySuffix(day)}`
+};
+

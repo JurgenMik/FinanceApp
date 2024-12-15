@@ -1,0 +1,82 @@
+@import '../../../../variables/variables.scss';
+
+.main-container-view-bills {
+    width: 100%;
+    height: 50rem;
+    background-color: $White;
+    border-radius: 0.75rem;
+    padding: 0 3rem;
+    overflow: scroll;
+
+    .sub-container-view-bills-row-header {
+        display: flex;
+        justify-content: space-between;
+        height: 4rem;
+        align-items: center;
+        border-bottom: 1px solid $VeryLightGrey;
+
+        h2 {
+            font-size: 0.90rem;
+            color: $LightGrey;
+            font-weight: 300;
+        }
+    }
+
+    .sub-container-view-bills-content {
+        width: 100%;
+        height: 50rem; 
+
+        .container-content {
+            height: 5rem;
+            display: flex; 
+            margin-top: 1.5rem;
+            border-bottom: 1px solid $DimGrey;
+
+            .bill-source {
+                height: 100%;
+                width: 46.5%;  
+                display: flex;
+                align-items: center;
+                font-size: 0.65rem;
+
+                img {
+                    border-radius: 100%;
+                    height: 2.5rem;
+                    width: 2.5rem;
+                    margin-right: 1rem;
+                }
+            }
+
+            .bill-details {
+                width: 53.5%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                span {
+                    width: 7.25rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    font-size: 0.85rem;
+                    color: $MedGrey;
+                    font-weight: 300;
+                  
+                    #due {
+                        color: $Red;
+                    }
+
+                    #paid {
+                        color: $Green;
+                    }
+                }
+
+                #amount {
+                    font-weight: 800;
+                    font-size: 0.90rem;
+                }
+            }
+        }
+    }
+}
