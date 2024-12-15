@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Bills.scss';
 import { useSelector } from 'react-redux';
 import type { RecurringBillsState } from '../../interfaces';
@@ -6,8 +6,12 @@ import { handleCalculateTotals } from '../../utils';
 import TotalBills from './components/TotalBills/TotalBills';
 import BillSummary from './components/BillSummary/BillSummary';
 import ViewBills from './components/ViewBills/ViewBills';
+import MappingControls from '../../components/MappingControls/MappingControls';
 
 function Bills() {
+
+  const [search, setSearch] = useState<string>('');
+  const [sort, setSort] = useState<string>('');
 
   const recurringBillsState = useSelector((state: {recurringBills: RecurringBillsState}) => state.recurringBills);
 
@@ -16,7 +20,7 @@ function Bills() {
   const totalUpcoming = handleCalculateTotals(recurringBillsState.upcoming, 'amount');
 
   const total = Math.abs(totalDue + totalPaid + totalUpcoming).toFixed(2);
-  
+
   return ( 
     <div className="main-container-rec-bills">
       <h1 id="heading">
@@ -32,10 +36,17 @@ function Bills() {
           />
         </div>
         <div>
+          <MappingControls 
+            placeholder={'Search Bills'}
+            setSearch={setSearch} 
+            setSort={setSort}
+          />
           <ViewBills 
             due={recurringBillsState.due}
             paid={recurringBillsState.paid} 
-            upcoming={recurringBillsState.upcoming}  
+            upcoming={recurringBillsState.upcoming} 
+            sort={sort} 
+            search={search}
           /> 
         </div>
       </div>
