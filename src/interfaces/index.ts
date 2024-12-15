@@ -103,3 +103,8 @@ export interface MappingControlsProps {
     setFilter: ((value: string) => void) | null;
 };
 
+export interface Options {
+  value: string;
+  label: string;  
+};
+

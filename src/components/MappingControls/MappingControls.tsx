@@ -1,9 +1,19 @@
 import React from 'react';
 import './MappingControls.scss';
 import { IoIosSearch, TiArrowSortedDown } from '../../assets/index';
-import type { MappingControlsProps } from '../../interfaces';
+import type { MappingControlsProps, Options } from '../../interfaces';
+import { sortOptions, filterOptions } from '../../utils/index';
 
-function MenuLink({placeholder, setSearch, setSort, setFilter}: MappingControlsProps) {
+function MappingControls({placeholder, setSearch, setSort, setFilter}: MappingControlsProps) {
+
+  const handlePopulateSelectOpt = (options: Options[]) => {
+    return options.map((option) => (
+      <option key={option.value} value={option.value}>
+        {option.label}
+      </option>
+    ));
+  };
+
   return (
     <div className="main-container-mappings">
       <span id="search-input">
@@ -26,12 +36,7 @@ function MenuLink({placeholder, setSearch, setSort, setFilter}: MappingControlsP
             setSort(e.target.value)
           }
         >
-          <option value="Latest">Latest</option>
-          <option value="Oldest">Oldest</option>
-          <option value="a-to-z">A to Z</option>
-          <option value="z-to-a">Z to A</option>
-          <option value="Highest">Highest</option>
-          <option value="Lowest">Lowest</option>  
+          {handlePopulateSelectOpt(sortOptions)} 
         </select>
         <TiArrowSortedDown id="select" />
       </span>
@@ -45,16 +50,7 @@ function MenuLink({placeholder, setSearch, setSort, setFilter}: MappingControlsP
                 setFilter?.(e.target.value)
               }
             >
-              <option value="All">All Transactions</option>
-              <option value="Entertainment">Entertainment</option>
-              <option value="Bills">Bills</option>
-              <option value="Groceries">Groceries</option>
-              <option value="Dining Out">Dining Out</option>
-              <option value="Personal Care">Personal Care</option>
-              <option value="Education">Education</option>  
-              <option value="LifeStyle">Lifestyle</option>  
-              <option value="Shopping">Shopping</option>
-              <option value="General">General</option>      
+              {handlePopulateSelectOpt(filterOptions)}    
             </select>
             <TiArrowSortedDown id="select" />
           </span>
@@ -64,4 +60,4 @@ function MenuLink({placeholder, setSearch, setSort, setFilter}: MappingControlsP
   )    
 }
 
-export default MenuLink;
+export default MappingControls;
