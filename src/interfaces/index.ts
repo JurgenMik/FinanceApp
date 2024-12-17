@@ -104,7 +104,13 @@ export interface MappingControlsProps {
 };
 
 export interface Options {
-  value: string;
-  label: string;  
+    value: string;
+    label: string;  
+};
+
+export interface ViewTransactionsProps {
+    search: string;
+    sort: string;
+    filter: string;  
 };
 

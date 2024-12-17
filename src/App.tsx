@@ -75,7 +75,7 @@ function App() {
                 transactionDate <= dueRange
             );
         } 
-        else { return transaction.recurring &&  transactionDate > dueRange; }
+        else { return transaction.recurring && transactionDate > dueRange; }
     });
 
     dispatch(setRecurringBills({key: type, data: bills}));

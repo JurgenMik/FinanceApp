@@ -21,7 +21,11 @@ function Transactions() {
           setSort={setSort}
           setFilter={setFilter}
         /> 
-        <ViewTransactions />   
+        <ViewTransactions
+          search={search}
+          sort={sort}
+          filter={filter}
+        />   
       </div>
     </div>
   );

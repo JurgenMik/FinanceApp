@@ -17,39 +17,33 @@ function ViewBills({due, paid, upcoming, search, sort}: RecurringBillsState | an
   const handleSortBills = () => {
     switch (sort) {
       case 'Latest':
-        return [...totalBills].sort((a, b) => {
-          const dateA = new Date(a.date);
-          const dateB = new Date(b.date);
-
-          return dateB.getTime() - dateA.getTime();
-        });
+        return totalBills.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
       case 'Oldest':
-        return [...totalBills].sort((a, b) => {
-          const dateA = new Date(a.date);
-          const dateB = new Date(b.date);
-
-          return dateA.getTime() - dateB.getTime();
-        });
+        return totalBills.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
       case 'a-to-z':
-        return [...totalBills].sort((a, b) => a.name.localeCompare(b.name));  
+        return totalBills.sort((a, b) => a.name.localeCompare(b.name));
       case 'z-to-a':
-        return [...totalBills].sort((a, b) => b.name.localeCompare(a.name));
+        return totalBills.sort((a, b) => b.name.localeCompare(a.name));
       case 'Highest':
-        return [...totalBills].sort((a, b) => a.amount - b.amount);
+        return totalBills.sort((a, b) => b.amount - a.amount);
       case 'Lowest':
-        return [...totalBills].sort((a, b) => b.amount - a.amount); 
+        return totalBills.sort((a, b) => a.amount - b.amount);
       default:
         return totalBills;
     }
   };
 
   const filteredOrSortedBills = useMemo(() => {
-    let bills = totalBills;
+    let bills = [...totalBills];
 
-    if (prevSort !== sort) { bills = handleSortBills(); }
+    if (prevSort.current !== sort) { bills = handleSortBills(); }
     
-    return bills.filter((bill: Transaction) => bill.name.toLocaleLowerCase()
-      .includes(search.toLocaleLowerCase())); 
+    if (search) {
+      bills = bills.filter((bill: Transaction) => bill.name.toLocaleLowerCase()
+      .includes(search.toLocaleLowerCase()));
+    }
+
+    return bills;
 
   }, [search, sort, totalBills]);
 
