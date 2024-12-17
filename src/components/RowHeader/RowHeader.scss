@@ -1,0 +1,15 @@
+@import '../../variables/variables.scss';
+
+.main-container-view-row-header {
+    display: flex;
+    justify-content: space-between;
+    height: 4rem;
+    align-items: center;
+    border-bottom: 1px solid $VeryLightGrey;
+
+    h2 {
+        font-size: 0.90rem;
+        color: $LightGrey;
+        font-weight: 300;
+    }
+}

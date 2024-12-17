@@ -3,6 +3,7 @@ import './ViewBills.scss';
 import type { RecurringBillsState, Transaction } from '../../../../interfaces';
 import { handleBillingDateFormat } from '../../../../utils';
 import { FaCircleExclamation, FaCheckCircle } from '../../../../assets/index';
+import RowHeader from '../../../../components/RowHeader/RowHeader';
 
 function ViewBills({due, paid, upcoming, search, sort}: RecurringBillsState | any) {
   
@@ -48,12 +49,8 @@ function ViewBills({due, paid, upcoming, search, sort}: RecurringBillsState | an
   }, [search, sort, totalBills]);
 
   return ( 
-    <div className="main-container-view-bills">
-      <div className="sub-container-view-bills-row-header">
-        <h2>Bill Title</h2>
-        <h2>Due Date</h2>
-        <h2>Amount</h2>  
-      </div> 
+    <div className="main-container-view-bills"> 
+      <RowHeader source={'bills'} />
       <div className="sub-container-view-bills-content">
         {filteredOrSortedBills.map((bill: Transaction) => {
             let category = '';

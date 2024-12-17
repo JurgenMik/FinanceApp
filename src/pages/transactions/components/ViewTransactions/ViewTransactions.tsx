@@ -7,6 +7,7 @@ import type {
   ViewTransactionsProps 
 } from '../../../../interfaces';
 import { handleFormatDate } from '../../../../utils';
+import RowHeader from '../../../../components/RowHeader/RowHeader';
 
 function ViewTransactions({sort, search, filter}: ViewTransactionsProps) {
 
@@ -60,12 +61,7 @@ function ViewTransactions({sort, search, filter}: ViewTransactionsProps) {
 
   return ( 
     <div className="main-container-view-transactions">
-      <div className="sub-container-view-transactions-row-header">
-        <h2>Recipient / Sender</h2>
-        <h2>Category</h2>
-        <h2>Transaction Date</h2>
-        <h2>Amount</h2>   
-      </div> 
+      <RowHeader source={'transactions'} />
       <div className="sub-container-view-transactions-content">
         {filteredOrSortedTransactions?.slice(0, 5).map((transaction: Transaction) => {
             return (
