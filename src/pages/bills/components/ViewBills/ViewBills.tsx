@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo, useRef } from 'react';
 import './ViewBills.scss';
 import type { RecurringBillsState, Transaction } from '../../../../interfaces';
-import { handleBillingDateFormat } from '../../../../utils';
+import { handleBillingDateFormat, handleSortEntries } from '../../../../utils';
 import { FaCircleExclamation, FaCheckCircle } from '../../../../assets/index';
 import RowHeader from '../../../../components/RowHeader/RowHeader';
 
@@ -15,29 +15,10 @@ function ViewBills({due, paid, upcoming, search, sort}: RecurringBillsState | an
     setBills([...due, ...paid, ...upcoming]);
   }, [due, paid, upcoming]);
 
-  const handleSortBills = () => {
-    switch (sort) {
-      case 'Latest':
-        return totalBills.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-      case 'Oldest':
-        return totalBills.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-      case 'a-to-z':
-        return totalBills.sort((a, b) => a.name.localeCompare(b.name));
-      case 'z-to-a':
-        return totalBills.sort((a, b) => b.name.localeCompare(a.name));
-      case 'Highest':
-        return totalBills.sort((a, b) => b.amount - a.amount);
-      case 'Lowest':
-        return totalBills.sort((a, b) => a.amount - b.amount);
-      default:
-        return totalBills;
-    }
-  };
-
   const filteredOrSortedBills = useMemo(() => {
     let bills = [...totalBills];
 
-    if (prevSort.current !== sort) { bills = handleSortBills(); }
+    if (prevSort.current !== sort) { bills = handleSortEntries(sort, bills, 'bills'); }
     
     if (search) {
       bills = bills.filter((bill: Transaction) => bill.name.toLocaleLowerCase()
