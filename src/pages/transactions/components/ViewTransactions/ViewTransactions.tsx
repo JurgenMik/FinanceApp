@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useEffect, useState } from 'react';
+import React, { useMemo, useRef } from 'react';
 import './ViewTransactions.scss';
 import { useSelector } from 'react-redux';
 import type { 
