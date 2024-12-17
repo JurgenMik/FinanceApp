@@ -2,7 +2,7 @@ import React from 'react';
 import './MappingControls.scss';
 import { IoIosSearch, TiArrowSortedDown } from '../../assets/index';
 import type { MappingControlsProps, Options } from '../../interfaces';
-import { sortOptions, filterOptions } from '../../utils/index';
+import { sortOptions, filterOptions } from '../../utils/select';
 
 function MappingControls({placeholder, setSearch, setSort, setFilter}: MappingControlsProps) {
 
