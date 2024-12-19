@@ -9,6 +9,7 @@ function Transactions() {
   const [search, setSearch] = useState<string>('');
   const [sort, setSort] = useState<string>('');
   const [filter, setFilter] = useState<string>('');
+  const [page, setPage] = useState<number>(1);
 
   return ( 
     <div className="main-container-trans-transactions">
@@ -27,7 +28,10 @@ function Transactions() {
           sort={sort}
           filter={filter}
         /> 
-        <Pagination />  
+        <Pagination
+          page={page}
+          setPage={setPage}
+        />  
       </div>
     </div>
   );

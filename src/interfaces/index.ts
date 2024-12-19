@@ -114,3 +114,8 @@ export interface ViewTransactionsProps {
     filter: string;  
 };
 
+export interface PaginateProps {
+    page: number;
+    setPage: ((value: number) => void);
+};
+

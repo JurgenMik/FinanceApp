@@ -39,7 +39,7 @@
         justify-content: space-evenly; 
         align-items: center;
 
-        span {
+        button {
             height: 2.5rem;
             width: 2.5rem;
             display: flex;
@@ -48,13 +48,18 @@
             border: 1px solid $LightGrey;
             border-radius: 0.5rem;
             margin-right: 0.25rem;
+            font-weight: 600;
+
+            &.active {
+                background-color: $DarkGrey;
+                color: $White;
+            }
 
             &:hover {
                 background-color: $LightGrey;
                 color: $White;
                 cursor: pointer;
             }
-
         }
     }
 }
