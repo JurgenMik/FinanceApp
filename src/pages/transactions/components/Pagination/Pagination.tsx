@@ -14,6 +14,8 @@ function Pagination({page, setPage}: PaginateProps) {
     }
   }
 
+  const paginateButtons = [1, 2, 3, 4, 5];
+
   return ( 
     <div className="main-container-pagination">
       <button 
@@ -24,11 +26,17 @@ function Pagination({page, setPage}: PaginateProps) {
         Prev 
       </button>
       <div className="sub-container-pagination">
-        <button className={page === 1 ? 'active' : ''} onClick={() => setPage(1)}>1</button>
-        <button className={page === 2 ? 'active' : ''} onClick={() => setPage(2)}>2</button>
-        <button className={page === 3 ? 'active' : ''} onClick={() => setPage(3)}>3</button>
-        <button className={page === 4 ? 'active' : ''} onClick={() => setPage(4)}>4</button>
-        <button className={page === 5 ? 'active' : ''} onClick={() => setPage(5)}>5</button>
+        {paginateButtons.map((value: number) => {
+            return (
+                <button 
+                  className={page === value ? 'active' : ''} 
+                  onClick={() => setPage(value)}
+                  key={value}
+                >
+                  {value}
+                </button> 
+            )
+        })}
       </div>   
       <button 
         type="button"
