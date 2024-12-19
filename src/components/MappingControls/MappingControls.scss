@@ -45,6 +45,10 @@
             border: 1px solid $LightGrey;
             appearance: none;
             outline: none;  
+
+            &:hover {
+                cursor: pointer;
+            }
         }
 
         .category {
@@ -61,8 +65,6 @@
             color: $LightGrey;
             margin-right: 1rem;
             font-weight: 300;
-           
-
         }
     }
 }

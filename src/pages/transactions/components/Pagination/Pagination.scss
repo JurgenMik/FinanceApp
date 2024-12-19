@@ -1,0 +1,60 @@
+@import '../../../../variables/variables.scss';
+
+.main-container-pagination {
+    width: 100%;
+    height: 7.5rem;
+    background-color: $White;
+    padding: 0 3rem;
+    border-bottom-left-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+        width: 6rem;
+        height: 2.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid $LightGrey;
+        background-color: $White;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        #icon-dir {
+            font-size: 1.5rem;
+        }
+        
+        &:hover {
+            background-color: $LightGrey;
+            color: $White;
+            cursor: pointer;
+        }   
+    }
+
+    .sub-container-pagination {
+        width: 25%; 
+        display: flex;
+        justify-content: space-evenly; 
+        align-items: center;
+
+        span {
+            height: 2.5rem;
+            width: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid $LightGrey;
+            border-radius: 0.5rem;
+            margin-right: 0.25rem;
+
+            &:hover {
+                background-color: $LightGrey;
+                color: $White;
+                cursor: pointer;
+            }
+
+        }
+    }
+}

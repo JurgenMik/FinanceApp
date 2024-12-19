@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Transactions.scss';
 import MappingControls from '../../components/MappingControls/MappingControls';
-import ViewTransactions from '../transactions/components/ViewTransactions/ViewTransactions'
+import ViewTransactions from '../transactions/components/ViewTransactions/ViewTransactions';
+import Pagination from './components/Pagination/Pagination';
 
 function Transactions() {
 
@@ -25,7 +26,8 @@ function Transactions() {
           search={search}
           sort={sort}
           filter={filter}
-        />   
+        /> 
+        <Pagination />  
       </div>
     </div>
   );
