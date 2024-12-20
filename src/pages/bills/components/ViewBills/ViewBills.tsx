@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useMemo, useRef } from 'react';
 import './ViewBills.scss';
 import type { RecurringBillsState, Transaction } from '../../../../interfaces';
-import { handleBillingDateFormat } from '../../../../utils';
+import { handleBillingDateFormat, handleSortEntries } from '../../../../utils';
 import { FaCircleExclamation, FaCheckCircle } from '../../../../assets/index';
+import RowHeader from '../../../../components/RowHeader/RowHeader';
 
 function ViewBills({due, paid, upcoming, search, sort}: RecurringBillsState | any) {
   
@@ -14,52 +15,23 @@ function ViewBills({due, paid, upcoming, search, sort}: RecurringBillsState | an
     setBills([...due, ...paid, ...upcoming]);
   }, [due, paid, upcoming]);
 
-  const handleSortBills = () => {
-    switch (sort) {
-      case 'Latest':
-        return [...totalBills].sort((a, b) => {
-          const dateA = new Date(a.date);
-          const dateB = new Date(b.date);
-
-          return dateB.getTime() - dateA.getTime();
-        });
-      case 'Oldest':
-        return [...totalBills].sort((a, b) => {
-          const dateA = new Date(a.date);
-          const dateB = new Date(b.date);
-
-          return dateA.getTime() - dateB.getTime();
-        });
-      case 'a-to-z':
-        return [...totalBills].sort((a, b) => a.name.localeCompare(b.name));  
-      case 'z-to-a':
-        return [...totalBills].sort((a, b) => b.name.localeCompare(a.name));
-      case 'Highest':
-        return [...totalBills].sort((a, b) => a.amount - b.amount);
-      case 'Lowest':
-        return [...totalBills].sort((a, b) => b.amount - a.amount); 
-      default:
-        return totalBills;
-    }
-  };
-
   const filteredOrSortedBills = useMemo(() => {
-    let bills = totalBills;
+    let bills = [...totalBills];
 
-    if (prevSort !== sort) { bills = handleSortBills(); }
+    if (prevSort.current !== sort) { bills = handleSortEntries(sort, bills, 'bills'); }
     
-    return bills.filter((bill: Transaction) => bill.name.toLocaleLowerCase()
-      .includes(search.toLocaleLowerCase())); 
+    if (search) {
+      bills = bills.filter((bill: Transaction) => bill.name.toLocaleLowerCase()
+      .includes(search.toLocaleLowerCase()));
+    }
+
+    return bills;
 
   }, [search, sort, totalBills]);
 
   return ( 
-    <div className="main-container-view-bills">
-      <div className="sub-container-view-bills-row-header">
-        <h2>Bill Title</h2>
-        <h2>Due Date</h2>
-        <h2>Amount</h2>  
-      </div> 
+    <div className="main-container-view-bills"> 
+      <RowHeader source={'bills'} />
       <div className="sub-container-view-bills-content">
         {filteredOrSortedBills.map((bill: Transaction) => {
             let category = '';
@@ -71,7 +43,10 @@ function ViewBills({due, paid, upcoming, search, sort}: RecurringBillsState | an
             return (
               <div className="container-content" key={bill.name + bill.date}>
                 <div className="bill-source">
-                  <img src={bill.avatar} />
+                  <img 
+                    src={bill.avatar} 
+                    alt="avatar" 
+                  />
                   <h2>{bill.name}</h2>
                 </div>
                 <div className="bill-details">

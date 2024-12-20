@@ -8,20 +8,6 @@
     padding: 0 3rem;
     overflow: scroll;
 
-    .sub-container-view-bills-row-header {
-        display: flex;
-        justify-content: space-between;
-        height: 4rem;
-        align-items: center;
-        border-bottom: 1px solid $VeryLightGrey;
-
-        h2 {
-            font-size: 0.90rem;
-            color: $LightGrey;
-            font-weight: 300;
-        }
-    }
-
     .sub-container-view-bills-content {
         width: 100%;
         height: 50rem; 

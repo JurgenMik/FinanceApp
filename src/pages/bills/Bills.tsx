@@ -40,6 +40,7 @@ function Bills() {
             placeholder={'Search Bills'}
             setSearch={setSearch} 
             setSort={setSort}
+            setFilter={null}
           />
           <ViewBills 
             due={recurringBillsState.due}

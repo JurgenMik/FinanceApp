@@ -10,7 +10,7 @@ function Transactions() {
     const transactionsState = useSelector((state: {transactions: TransactionsState}) => state.transactions);
 
     const mostRecentTransactions = transactionsState.transactions.filter((transaction) => {
-        const currentDate = new Date(2024, 1, 1);
+        const currentDate     = new Date(2024, 1, 1);
         const transactionDate = new Date(transaction.date);
 
         return transactionDate >= currentDate;

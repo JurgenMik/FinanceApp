@@ -27,7 +27,6 @@
         #search {
             font-size: 1.5rem;
             position: absolute;
-            right: 1rem;
             top: 0.75rem;
             color: $LightGrey;
         }
@@ -46,6 +45,14 @@
             border: 1px solid $LightGrey;
             appearance: none;
             outline: none;  
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .category {
+            width: 12.5rem;
         }
 
         #select {
@@ -58,8 +65,6 @@
             color: $LightGrey;
             margin-right: 1rem;
             font-weight: 300;
-           
-
         }
     }
 }

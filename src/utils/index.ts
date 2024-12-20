@@ -1,3 +1,5 @@
+import type { Transaction } from '../interfaces/index';
+
 const defaultRoutes: string[] = ['/transactions', '/pots', '/bills', '/', '/budgets'];
 
 export default defaultRoutes;
@@ -29,3 +31,23 @@ export const handleBillingDateFormat = (date: Date): string => {
   return `Monthly - ${day}${getDaySuffix(day)}`
 };
 
+export const handleSortEntries = (sort: string, entries: Transaction[], source: string): Transaction[] => {
+  switch (sort) {
+    case 'Latest':
+      return entries.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    case 'Oldest':
+      return entries.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    case 'a-to-z':
+      return entries.sort((a, b) => a.name.localeCompare(b.name));
+    case 'z-to-a':
+      return entries.sort((a, b) => b.name.localeCompare(a.name));
+    case 'Highest':
+      if (source === 'bills') { return entries.sort((a, b) => a.amount - b.amount); }
+      else                    { return entries.sort((a, b) => b.amount - a.amount); }
+    case 'Lowest':
+      if (source === 'bills') { return entries.sort((a, b) => b.amount - a.amount); }
+      else                    { return entries.sort((a, b) => a.amount - b.amount); }
+    default:
+      return entries;
+  }
+};

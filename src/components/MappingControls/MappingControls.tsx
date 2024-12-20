@@ -1,9 +1,19 @@
 import React from 'react';
 import './MappingControls.scss';
 import { IoIosSearch, TiArrowSortedDown } from '../../assets/index';
-import type { MappingControlsProps } from '../../interfaces';
+import type { MappingControlsProps, Options } from '../../interfaces';
+import { sortOptions, filterOptions } from '../../utils/select';
 
-function MenuLink({placeholder, setSearch, setSort}: MappingControlsProps) {
+function MappingControls({placeholder, setSearch, setSort, setFilter}: MappingControlsProps) {
+
+  const handlePopulateSelectOpt = (options: Options[]) => {
+    return options.map((option) => (
+      <option key={option.value} value={option.value}>
+        {option.label}
+      </option>
+    ));
+  };
+
   return (
     <div className="main-container-mappings">
       <span id="search-input">
@@ -12,8 +22,12 @@ function MenuLink({placeholder, setSearch, setSort}: MappingControlsProps) {
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => 
             setSearch(e.target.value)
           }
+          name="search"
         />
-        <IoIosSearch id="search" />
+        <IoIosSearch 
+          id="search" 
+          style={{right: placeholder === 'Search Bills' ? '1rem' : '1.5rem'}} 
+        />
       </span>
       <span id="sort-input">
         <p>Sort By</p>
@@ -22,18 +36,31 @@ function MenuLink({placeholder, setSearch, setSort}: MappingControlsProps) {
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => 
             setSort(e.target.value)
           }
+          name="sort"
         >
-          <option value="Latest">Latest</option>
-          <option value="Oldest">Oldest</option>
-          <option value="a-to-z">A to Z</option>
-          <option value="z-to-a">Z to A</option>
-          <option value="Highest">Highest</option>
-          <option value="Lowest">Lowest</option>  
+          {handlePopulateSelectOpt(sortOptions)} 
         </select>
         <TiArrowSortedDown id="select" />
       </span>
+      {placeholder === 'Search Transactions' 
+        ? 
+          <span id="sort-input">
+            <p>Category</p>
+            <select
+              className="sort-options category" 
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => 
+                setFilter?.(e.target.value)
+              }
+              name="filter"
+            >
+              {handlePopulateSelectOpt(filterOptions)}    
+            </select>
+            <TiArrowSortedDown id="select" />
+          </span>
+        : ''
+      }
     </div>
   )    
 }
 
-export default MenuLink;
+export default MappingControls;

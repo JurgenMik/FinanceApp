@@ -100,5 +100,23 @@ export interface MappingControlsProps {
     placeholder: string;
     setSearch: (value: string) => void;
     setSort: (value: string) => void;
+    setFilter: ((value: string) => void) | null;
+};
+
+export interface Options {
+    value: string;
+    label: string;  
+};
+
+export interface ViewTransactionsProps {
+    search: string;
+    sort: string;
+    filter: string;  
+    page: number;
+};
+
+export interface PaginateProps {
+    page: number;
+    setPage: ((value: number) => void);
 };
 
