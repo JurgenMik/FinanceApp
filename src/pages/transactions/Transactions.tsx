@@ -27,6 +27,7 @@ function Transactions() {
           search={search}
           sort={sort}
           filter={filter}
+          page={page}
         /> 
         <Pagination
           page={page}

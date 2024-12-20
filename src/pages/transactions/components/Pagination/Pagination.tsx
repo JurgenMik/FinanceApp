@@ -9,12 +9,12 @@ function Pagination({page, setPage}: PaginateProps) {
     if (action === 'previous' && page !== 1) { 
         setPage(page - 1); 
     } 
-    else if (action === 'next' && page !== 5) { 
+    else if (action === 'next' && page !== 10) { 
         setPage(page + 1); 
     }
   }
 
-  const paginateButtons = [1, 2, 3, 4, 5];
+  const paginateButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return ( 
     <div className="main-container-pagination">

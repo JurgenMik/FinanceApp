@@ -112,6 +112,7 @@ export interface ViewTransactionsProps {
     search: string;
     sort: string;
     filter: string;  
+    page: number;
 };
 
 export interface PaginateProps {

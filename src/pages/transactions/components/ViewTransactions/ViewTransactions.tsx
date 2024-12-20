@@ -9,7 +9,7 @@ import type {
 import { handleFormatDate, handleSortEntries } from '../../../../utils';
 import RowHeader from '../../../../components/RowHeader/RowHeader';
 
-function ViewTransactions({sort, search, filter}: ViewTransactionsProps) {
+function ViewTransactions({sort, search, filter, page}: ViewTransactionsProps) {
 
   const transactionsState = useSelector((state: {transactions: TransactionsState}) => state.transactions);
 
@@ -25,8 +25,12 @@ function ViewTransactions({sort, search, filter}: ViewTransactionsProps) {
   }
   
   const filteredOrSortedTransactions = useMemo(() => {
-    let transactions = [...transactionsState.transactions];
+    const perPage = 5;
+    const start   = (page - 1) * perPage;
+    const end     = start + perPage;
 
+    let transactions = [...transactionsState.transactions];
+    
     if (prevSort.current !== sort) { transactions = handleSortEntries(sort, transactions, ''); }
     
     if (prevFilter.current !== filter) { transactions = handleFilterTransactions(transactions); }
@@ -35,16 +39,16 @@ function ViewTransactions({sort, search, filter}: ViewTransactionsProps) {
       transactions = transactions.filter((transaction: Transaction) => transaction.name.toLocaleLowerCase()
       .includes(search.toLocaleLowerCase()));   
     }
+    
+    return transactions.slice(start, end);
 
-    return transactions;
-  
-  }, [search, sort, filter, transactionsState.transactions]);
+  }, [search, sort, filter, transactionsState.transactions, page]);
 
   return ( 
     <div className="main-container-view-transactions">
       <RowHeader source={'transactions'} />
       <div className="sub-container-view-transactions-content">
-        {filteredOrSortedTransactions?.slice(0, 5).map((transaction: Transaction) => {
+        {filteredOrSortedTransactions.map((transaction: Transaction) => {
             return (
               <div 
                 className="container-content"
