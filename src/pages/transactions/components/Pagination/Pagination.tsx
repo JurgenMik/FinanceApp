@@ -14,7 +14,7 @@ function Pagination({page, setPage}: PaginateProps) {
     }
   }
 
-  const paginateButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const paginatorButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return ( 
     <div className="main-container-pagination">
@@ -26,7 +26,7 @@ function Pagination({page, setPage}: PaginateProps) {
         Prev 
       </button>
       <div className="sub-container-pagination">
-        {paginateButtons.map((value: number) => {
+        {paginatorButtons.map((value: number) => {
             return (
                 <button 
                   className={page === value ? 'active' : ''} 
