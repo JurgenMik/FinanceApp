@@ -1,18 +1,13 @@
 import React from 'react';
 import './Categories.scss';
-import { useSelector } from 'react-redux';
 import type { 
   Savings, 
   Pot, 
   Allocations, 
-  TransactionsState, 
-  Budget 
 } from '../../../../interfaces/index';
-import { handleCalculateTotals } from '../../../../utils';
+import BudgetsCategories from '../../../budgets/components/BudgetsCategories/BudgetsCategories';
 
 function Categories({resources, styleProp, category, page}: Savings | any) {
-
-  const transactionsState = useSelector((state: {transactions: TransactionsState}) => state.transactions);
 
   let showLimited = resources;
 
@@ -49,48 +44,6 @@ function Categories({resources, styleProp, category, page}: Savings | any) {
     );
   }
 
-  const handleBudgetsCategories = () => {
-    return (
-      <>
-        {showLimited.map((resource: Allocations | any) => (
-          <div
-            className="container-category-budgets"
-            key={resource.category}
-          >
-            <span
-              id="theme"
-              style={{backgroundColor: resource.theme}}
-            />
-            <div className="category-details">
-              <p id="heading-cat">{resource.category}</p>
-              <div className="summary">
-                <p>${handleSpendingByCategory(resource.category)}</p>
-                <p id="summary-total">of ${resource.maximum.toFixed(2)}</p>
-              </div>  
-            </div>
-          </div>
-        ))}
-      </>
-    );
-  }
-
-  const handleSpendingByCategory = (category: string): string => {
-    const targetMonth = 7;
-    const startDate   = new Date(2024, targetMonth - 1, 2);
-    const endDate     = new Date(2024, targetMonth, 31);
-
-    const recentSpendings = transactionsState.transactions.filter((transaction) => {
-      const transactionDate = new Date(transaction.date); 
-      
-      return transactionDate >= startDate     && 
-             transactionDate <= endDate       &&
-             transaction.category == category &&
-             !transaction.recurring;
-    });
-
-    return Math.abs(handleCalculateTotals(recentSpendings, "amount")).toFixed(2); 
-  }
-
   const handleMainContStyleProps = (): object => {
     return ({
       gridTemplateColumns: styleProp,
@@ -103,7 +56,7 @@ function Categories({resources, styleProp, category, page}: Savings | any) {
       className="main-container-categories"
       style={handleMainContStyleProps()}
     >
-      {page === 'budgets' ? handleBudgetsCategories() : handleOverviewCategories()} 
+      {page === 'budgets' ? <BudgetsCategories showLimited={showLimited} /> : handleOverviewCategories()} 
     </div>
   );
 }
