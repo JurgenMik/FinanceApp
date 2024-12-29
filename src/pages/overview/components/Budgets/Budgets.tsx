@@ -15,6 +15,7 @@ function Budgets({resources}: Allocations) {
       <BudgetsGlob 
         resources={resources} 
         styleProp={'row'}
+        page={''}
       />
     </div>
   );

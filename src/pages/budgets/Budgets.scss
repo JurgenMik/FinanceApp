@@ -1,0 +1,47 @@
+@import '../../variables/variables.scss';
+
+.main-container-bud-budgets {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+
+    .sub-container-bud-heading {
+        width: 85%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+           width: 10rem; 
+           padding: 1.25rem;
+           border-radius: 0.75rem;
+           border: none;
+           background-color: $DarkGrey;
+           color: $White;
+           font-weight: 600;
+           cursor: pointer;
+
+           &:hover {
+                background-color: $LightGrey;
+                color: $White; 
+           }
+        }
+    }
+
+    .sub-container-bud-budgets {
+        width: 100%;
+        height: 100%;
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: 30% 60%;
+        gap: 6rem;
+
+        .spending-summary {
+            width: 100%;
+            height: 40rem;
+            background-color: $White;
+            border-radius: 0.75rem;
+            padding-left: 1rem;
+        }
+    }
+}
