@@ -1,9 +1,5 @@
 import type { Transaction } from '../interfaces/index';
 
-const defaultRoutes: string[] = ['/transactions', '/pots', '/bills', '/', '/budgets'];
-
-export default defaultRoutes;
-
 export const handleCalculateTotals = (entries: unknown[], unit: string): number => {
   return entries.reduce((total: number, entry: any) => total + entry[unit], 0)
 };
@@ -51,3 +47,24 @@ export const handleSortEntries = (sort: string, entries: Transaction[], source: 
       return entries;
   }
 };
+
+export const handleSpendingByCategory = (transactions: Transaction[], category: string): string => {
+  const targetMonth = 7;
+  const startDate   = new Date(2024, targetMonth - 1, 2);
+  const endDate     = new Date(2024, targetMonth, 31);
+
+  const recentSpendings = transactions.filter((transaction) => {
+    const transactionDate = new Date(transaction.date); 
+    
+    return transactionDate >= startDate       && 
+            transactionDate <= endDate        &&
+            transaction.category === category &&
+            !transaction.recurring;
+  });
+
+  return Math.abs(handleCalculateTotals(recentSpendings, "amount")).toFixed(2); 
+};
+
+const defaultRoutes: string[] = ['/transactions', '/pots', '/bills', '/', '/budgets'];
+
+export default defaultRoutes;

@@ -8,3 +8,4 @@ export { MdArrowRight, MdArrowLeft} from "react-icons/md";
 export { FaCircleExclamation } from "react-icons/fa6";
 export { IoIosSearch } from "react-icons/io";
 export { TiArrowSortedDown } from "react-icons/ti";
+export { HiOutlineDotsHorizontal } from "react-icons/hi";

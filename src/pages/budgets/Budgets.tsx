@@ -1,6 +1,7 @@
 import React from 'react';
 import './Budgets.scss';
 import BudgetsGlob from '../../components/BudgetsGlob/BudgetsGlob';
+import BudgetDetails from './components/BudgetDetails/BudgetDetails';
 import type { FinanceProps } from '../../interfaces/index';
 
 function Budgets({finances}: FinanceProps | any) {
@@ -18,13 +19,16 @@ function Budgets({finances}: FinanceProps | any) {
         </button>
       </div>
       <div className="sub-container-bud-budgets">
-        <span className="spending-summary">
+        <div className="spending-summary">
           <BudgetsGlob
             resources={finances.budgets}
             styleProp={'column'}
             page={'budgets'}
           />
-        </span>   
+        </div> 
+        <div>
+          <BudgetDetails resources={finances.budgets} /> 
+        </div>
       </div>
     </div>
   );

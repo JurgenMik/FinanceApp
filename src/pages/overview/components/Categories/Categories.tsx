@@ -3,11 +3,12 @@ import './Categories.scss';
 import type { 
   Savings, 
   Pot, 
+  Budget,
   Allocations, 
 } from '../../../../interfaces/index';
 import BudgetsCategories from '../../../budgets/components/BudgetsCategories/BudgetsCategories';
 
-function Categories({resources, styleProp, category, page}: Savings | any) {
+function Categories({resources, styleProp, category, page}: Savings | Allocations | any) {
 
   let showLimited = resources;
 
@@ -16,7 +17,7 @@ function Categories({resources, styleProp, category, page}: Savings | any) {
   const handleOverviewCategories = () => {
     return (
       <>
-        {showLimited.map((resource: Pot | Allocations | any) => (
+        {showLimited.map((resource: Pot | Budget | any) => (
           <div
             className="container-category"
             key={category === 'pots' ? resource.name : resource.category}
@@ -56,7 +57,10 @@ function Categories({resources, styleProp, category, page}: Savings | any) {
       className="main-container-categories"
       style={handleMainContStyleProps()}
     >
-      {page === 'budgets' ? <BudgetsCategories showLimited={showLimited} /> : handleOverviewCategories()} 
+      {page === 'budgets' 
+        ? <BudgetsCategories resources={showLimited} /> 
+        : handleOverviewCategories()
+      } 
     </div>
   );
 }

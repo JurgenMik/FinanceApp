@@ -7,7 +7,10 @@ function NotFound() {
   return ( 
     <div className="main-container-not-found">
       <span>
-        <img src={Logo} />    
+        <img 
+          src={Logo} 
+          alt="logo" 
+        />    
       </span>
       <h1>404 Page Not Found</h1>
       <Link to="/" id="return">

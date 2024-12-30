@@ -120,3 +120,9 @@ export interface PaginateProps {
     setPage: ((value: number) => void);
 };
 
+export interface ProgressBarProps {
+    theme: string;
+    progress: number;
+    max: number;
+};
+
