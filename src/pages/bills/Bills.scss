@@ -1,7 +1,9 @@
 .main-container-rec-bills {
     width: 100%;
-    height: 100%;
-    overflow: scroll;
+    min-height: 100vh;
+    max-height: 100vh; 
+    overflow-y: auto; 
+    box-sizing: border-box;
 
     .sub-container-rec-bills {
         width: 100%;

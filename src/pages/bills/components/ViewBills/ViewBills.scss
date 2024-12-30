@@ -2,11 +2,12 @@
 
 .main-container-view-bills {
     width: 100%;
-    height: 50rem;
+    min-height: 130vh;
+    max-height: auto;
     background-color: $White;
     border-radius: 0.75rem;
     padding: 0 3rem;
-    overflow: scroll;
+    margin-bottom: 1rem;
 
     .sub-container-view-bills-content {
         width: 100%;
