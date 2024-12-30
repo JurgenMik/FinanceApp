@@ -56,10 +56,10 @@ export const handleSpendingByCategory = (transactions: Transaction[], category: 
   const recentSpendings = transactions.filter((transaction) => {
     const transactionDate = new Date(transaction.date); 
     
-    return transactionDate >= startDate       && 
-            transactionDate <= endDate        &&
-            transaction.category === category &&
-            !transaction.recurring;
+    return transactionDate >= startDate      && 
+           transactionDate <= endDate        &&
+           transaction.category === category &&
+           !transaction.recurring;
   });
 
   return Math.abs(handleCalculateTotals(recentSpendings, "amount")).toFixed(2); 

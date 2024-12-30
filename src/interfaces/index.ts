@@ -126,3 +126,8 @@ export interface ProgressBarProps {
     max: number;
 };
 
+export interface LatestSpendingProps {
+    transactions: Transaction[];
+    category: string;
+};
+
