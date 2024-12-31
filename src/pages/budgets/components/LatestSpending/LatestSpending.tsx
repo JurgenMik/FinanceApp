@@ -3,7 +3,7 @@ import './LatestSpending.scss';
 import { MdArrowRight } from '../../../../assets/index';
 import { Link } from 'react-router-dom';
 import type { LatestSpendingProps, Transaction } from '../../../../interfaces';
-import { handleFormatDate } from '../../../../utils';
+import { handleFormatDate, handleGetDateRangeComponents } from '../../../../utils';
 
 function LatestSpending({transactions, category}: LatestSpendingProps) {
   
@@ -14,9 +14,7 @@ function LatestSpending({transactions, category}: LatestSpendingProps) {
   }, [transactions]);
 
   const handleGetLatestTranByCat = () => {
-    const targetMonth = 7;
-    const startDate   = new Date(2024, targetMonth - 1, 2);
-    const endDate     = new Date(2024, targetMonth, 31);
+    const { startDate, endDate } = handleGetDateRangeComponents()
 
     const recentSpendings = transactions.filter((transaction) => {
       const transactionDate = new Date(transaction.date); 

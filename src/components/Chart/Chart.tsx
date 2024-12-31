@@ -8,7 +8,7 @@ import {
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import type { Transaction, TransactionsState, Budget, Allocations } from '../../interfaces/index';
-import { handleCalculateTotals } from '../../utils';
+import { handleCalculateTotals, handleGetDateRangeComponents } from '../../utils';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -46,9 +46,7 @@ function Chart({resources, page}: Allocations | any) {
   }
 
   const handleCalcSpendingSummary = (): string => {
-    const targetMonth = 7;
-    const startDate   = new Date(2024, targetMonth - 1, 2);
-    const endDate     = new Date(2024, targetMonth, 31);
+    const { startDate, endDate } = handleGetDateRangeComponents()
 
     const budgetCategories = resources.map((budget: Budget) => budget.category);
 

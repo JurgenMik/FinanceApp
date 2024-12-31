@@ -36,9 +36,9 @@ function ViewBills({due, paid, upcoming, search, sort}: RecurringBillsState | an
         {filteredOrSortedBills.map((bill: Transaction) => {
             let category = '';
            
-            if (due.some((b: Transaction) => b.name === bill.name && b.date === bill.date)) { category = 'due'}
-            else if (paid.some((b: Transaction) => b.name === bill.name && b.date === bill.date)) { category = 'paid'}
-            else { category = 'upcoming' }
+            if (due.some((b: Transaction) => b.name === bill.name && b.date === bill.date)) { category = 'due'; }
+            else if (paid.some((b: Transaction) => b.name === bill.name && b.date === bill.date)) { category = 'paid'; }
+            else { category = 'upcoming'; }
 
             return (
               <div className="container-content" key={bill.name + bill.date}>
