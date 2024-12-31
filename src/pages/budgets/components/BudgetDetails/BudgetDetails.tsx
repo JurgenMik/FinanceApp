@@ -1,7 +1,6 @@
 import React from 'react';
 import './BudgetDetails.scss';
 import type { Allocations, TransactionsState, Budget } from '../../../../interfaces/index';
-import { HiOutlineDotsHorizontal } from '../../../../assets/index';
 import { useSelector } from 'react-redux';
 import { handleSpendingByCategory} from '../../../../utils/index';
 import ProgressBar from '../../../../components/ProgressBar/ProgressBar';
