@@ -1,6 +1,6 @@
 import React from 'react';
 import './BudgetDetails.scss';
-import type { Allocations, TransactionsState } from '../../../../interfaces/index';
+import type { Allocations, TransactionsState, Budget } from '../../../../interfaces/index';
 import { HiOutlineDotsHorizontal } from '../../../../assets/index';
 import { useSelector } from 'react-redux';
 import { handleSpendingByCategory} from '../../../../utils/index';
@@ -15,9 +15,17 @@ function BudgetDetails({resources}: Allocations) {
     return parseInt(handleSpendingByCategory(transactions.transactions, category));
   }
 
+  const handleIsBudgetBalanceNegative = (budget: Budget) => {
+    const isNegative = budget.maximum - handleBudgetSpendingAsInt(budget.category) < 1; 
+    const remaining  = budget.maximum - handleBudgetSpendingAsInt(budget.category);
+
+    return { isNegative, remaining };
+  }
+
   return (
     <>
       {resources.map((budget) => {
+        const { isNegative, remaining } = handleIsBudgetBalanceNegative(budget);
         return (
           <div 
             className="main-container-budget-details" 
@@ -53,9 +61,9 @@ function BudgetDetails({resources}: Allocations) {
                 <div className="container-remaining">
                   <span id="remaining" />
                   <h3>Remaining</h3>
-                  {budget.maximum - handleBudgetSpendingAsInt(budget.category) < 1 
-                    ? <p>{`-$${Math.abs(budget.maximum - handleBudgetSpendingAsInt(budget.category))}`}</p>
-                    : <p>{`$${budget.maximum - handleBudgetSpendingAsInt(budget.category)}`}</p>
+                  {isNegative
+                    ? <p>{`-$${Math.abs(remaining)}`}</p>
+                    : <p>{`$${remaining}`}</p>
                   }
                 </div>
               </div> 
