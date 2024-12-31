@@ -131,3 +131,8 @@ export interface LatestSpendingProps {
     category: string;
 };
 
+export interface FundHeadingProps {
+    name: string;
+    theme: string;
+};
+

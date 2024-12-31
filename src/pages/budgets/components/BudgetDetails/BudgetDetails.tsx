@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { handleSpendingByCategory} from '../../../../utils/index';
 import ProgressBar from '../../../../components/ProgressBar/ProgressBar';
 import LatestSpending from '../LatestSpending/LatestSpending';
+import FundHeading from '../../../../components/FundHeading/FundHeading';
 
 function BudgetDetails({resources}: Allocations) {
 
@@ -32,14 +33,10 @@ function BudgetDetails({resources}: Allocations) {
             key={budget.category}
           >
             <div className="sub-container-budget-details-heading">
-              <div className="container-title">
-                <span style={{backgroundColor: budget.theme}} />
-                <h2>{budget.category}</h2>
-              </div>
-              <HiOutlineDotsHorizontal 
-                id="options" 
-                onClick={() => ""}
-              />   
+              <FundHeading 
+                name={budget.category} 
+                theme={budget.theme}
+              />
             </div>
             <div>
               <h2 id="budget-total">
