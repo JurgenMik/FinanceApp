@@ -117,7 +117,7 @@ export interface ViewTransactionsProps {
 
 export interface PaginateProps {
     page: number;
-    setPage: ((value: number) => void);
+    setPage: (value: number) => void;
 };
 
 export interface ProgressBarProps {
@@ -134,5 +134,14 @@ export interface LatestSpendingProps {
 export interface FundHeadingProps {
     name: string;
     theme: string;
+    source: string;
+    handleDeleteFund: (value: string) => void;
+};
+
+export interface DeleteModalProps {
+    category: string;
+    setShowDelete: (value: boolean) => void;
+    source: string;
+    handleDeleteFund: (value: string) => void;
 };
 

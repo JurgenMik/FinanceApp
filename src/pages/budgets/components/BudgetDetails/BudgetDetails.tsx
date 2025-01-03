@@ -7,7 +7,7 @@ import ProgressBar from '../../../../components/ProgressBar/ProgressBar';
 import LatestSpending from '../LatestSpending/LatestSpending';
 import FundHeading from '../../../../components/FundHeading/FundHeading';
 
-function BudgetDetails({resources}: Allocations) {
+function BudgetDetails({finances, resources, setFinanceData}: Allocations | any) {
 
   const transactions = useSelector((state: {transactions: TransactionsState}) => state.transactions);
 
@@ -22,9 +22,15 @@ function BudgetDetails({resources}: Allocations) {
     return { isNegative, remaining };
   }
 
+  const handleDeleteBudget = (fund: string) => {
+    const updatedBudgets = resources.filter((budget: Budget) => budget.category !== fund);
+    
+    setFinanceData({...finances, budgets: updatedBudgets});
+  }
+
   return (
     <>
-      {resources.map((budget) => {
+      {resources.map((budget: Budget) => {
         const { isNegative, remaining } = handleIsBudgetBalanceNegative(budget);
         return (
           <div 
@@ -35,7 +41,9 @@ function BudgetDetails({resources}: Allocations) {
               <FundHeading 
                 name={budget.category} 
                 theme={budget.theme}
-              />
+                source={'Budget'}
+                handleDeleteFund={handleDeleteBudget}
+              />      
             </div>
             <div>
               <h2 id="budget-total">

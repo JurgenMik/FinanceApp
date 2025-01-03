@@ -4,7 +4,7 @@ import BudgetsGlob from '../../components/BudgetsGlob/BudgetsGlob';
 import BudgetDetails from './components/BudgetDetails/BudgetDetails';
 import type { FinanceProps } from '../../interfaces/index';
 
-function Budgets({finances}: FinanceProps | any) {
+function Budgets({finances, setFinanceData}: FinanceProps | any) {
   return ( 
     <div className="main-container-bud-budgets">
       <div className="sub-container-bud-heading">
@@ -27,7 +27,11 @@ function Budgets({finances}: FinanceProps | any) {
           />
         </div> 
         <div>
-          <BudgetDetails resources={finances.budgets} /> 
+          <BudgetDetails 
+            resources={finances.budgets}
+            finances={finances}
+            setFinanceData={setFinanceData} 
+          /> 
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ body {
     overflow: hidden;
     font-family: $FontPrimary;
     font-weight: 600;
+    position: relative;
 
     ::-webkit-scrollbar {
         width: 0.70rem;

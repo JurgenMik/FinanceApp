@@ -14,7 +14,7 @@ function LatestSpending({transactions, category}: LatestSpendingProps) {
   }, [transactions]);
 
   const handleGetLatestTranByCat = () => {
-    const { startDate, endDate } = handleGetDateRangeComponents()
+    const { startDate, endDate } = handleGetDateRangeComponents();
 
     const recentSpendings = transactions.filter((transaction) => {
       const transactionDate = new Date(transaction.date); 
