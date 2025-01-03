@@ -42,22 +42,20 @@ function MappingControls({placeholder, setSearch, setSort, setFilter}: MappingCo
         </select>
         <TiArrowSortedDown id="select" />
       </span>
-      {placeholder === 'Search Transactions' 
-        ? 
-          <span id="sort-input">
-            <p>Category</p>
-            <select
-              className="sort-options category" 
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => 
-                setFilter?.(e.target.value)
-              }
-              name="filter"
-            >
-              {handlePopulateSelectOpt(filterOptions)}    
-            </select>
-            <TiArrowSortedDown id="select" />
-          </span>
-        : ''
+      {placeholder === 'Search Transactions' &&
+        <span id="sort-input">
+          <p>Category</p>
+          <select
+            className="sort-options category" 
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => 
+              setFilter?.(e.target.value)
+            }
+            name="filter"
+          >
+            {handlePopulateSelectOpt(filterOptions)}    
+          </select>
+          <TiArrowSortedDown id="select" />
+        </span>
       }
     </div>
   )    

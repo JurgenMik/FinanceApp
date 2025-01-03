@@ -8,8 +8,8 @@ function BudgetsGlob({resources, styleProp, page}: Allocations | any) {
   
   const handleSubContStyleProps = (): object => {
     return ({
-      width: page === 'budgets' ? '100%' : '',
-      height: page === 'budgets' ? '20rem' : ''
+      width: page === 'budgets' && '100%',
+      height: page === 'budgets' && '20rem'
     });
   }
 
@@ -28,7 +28,7 @@ function BudgetsGlob({resources, styleProp, page}: Allocations | any) {
         />
       </div>
       <div>
-        {page === 'budgets' ? <h2>Spending Summary</h2> : ''}
+        {page === 'budgets' && <h2>Spending Summary</h2>}
         <Categories 
           resources={resources}
           styleProp={'1.5fr'} 

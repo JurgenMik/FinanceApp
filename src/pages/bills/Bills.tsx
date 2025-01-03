@@ -30,9 +30,18 @@ function Bills() {
         <div>
           <TotalBills total={total} />
           <BillSummary 
-            due={{amount: totalDue, bills: recurringBillsState.due.length}} 
-            paid={{amount: totalPaid, bills: recurringBillsState.paid.length}}
-            upcoming={{amount: totalUpcoming, bills: recurringBillsState.upcoming.length}} 
+            due={{
+              amount:totalDue, 
+              bills: recurringBillsState.due.length
+            }} 
+            paid={{
+              amount: totalPaid, 
+              bills: recurringBillsState.paid.length
+            }}
+            upcoming={{
+              amount: totalUpcoming, 
+              bills: recurringBillsState.upcoming.length
+            }} 
           />
         </div>
         <div>

@@ -3,11 +3,13 @@ import './FundHeading.scss';
 import { HiOutlineDotsHorizontal } from '../../assets/index';
 import type { FundHeadingProps } from '../../interfaces';
 import DeleteModal from '../../components/DeleteModal/DeleteModal';
+import EditBudget from '../../pages/budgets/components/EditBudget/EditBudget';
 
-function FundHeading({name, theme, source, handleDeleteFund}: FundHeadingProps) {
+function FundHeading({name, theme, source, handleDeleteFund, handleEditBudget, max}: FundHeadingProps) {
 
   const [showCatOptions, setShowOptions] = useState<string>('');
   const [showDelete, setShowDelete] = useState<boolean>(false);
+  const [showEdit, setShowEdit] = useState<boolean>(false);
  
   const handleShowOptionsForCat = (): void => {
     if (showCatOptions !== '') { 
@@ -25,7 +27,7 @@ function FundHeading({name, theme, source, handleDeleteFund}: FundHeadingProps) 
         <h2>{name}</h2>
         {showCatOptions === name && (
           <div className="select-options">
-            <p onClick={() => ""}>
+            <p onClick={() => setShowEdit(true)}>
               Edit {source}
             </p>
             <p 
@@ -48,7 +50,15 @@ function FundHeading({name, theme, source, handleDeleteFund}: FundHeadingProps) 
           source={source} 
           handleDeleteFund={handleDeleteFund}
         />
-      }  
+      } 
+      {showEdit && source === 'Budget' &&
+        <EditBudget
+          category={name} 
+          setShowEdit={setShowEdit}
+          handleEditBudget={handleEditBudget}
+          max={max ?? 0}
+        />
+      } 
     </> 
   );
 }

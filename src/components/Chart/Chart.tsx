@@ -67,15 +67,15 @@ function Chart({resources, page}: Allocations | any) {
 
   const handleLimitStyleProps = (): object => {
     return ({
-      top: page === 'budgets' ? '5.75rem' : '',
-      fontSize: page === 'budgets' ? '2rem' : '',
+      top: page === 'budgets' && '5.75rem',
+      fontSize: page === 'budgets' && '2rem',
     });
   }
 
   const handleTotalLimitStyleProps = (): object => {
     return ({
-      top: page === 'budgets' ? '10rem' : '',
-      fontSize: page === 'budgets' ? '0.90rem' : '',
+      top: page === 'budgets' && '10rem',
+      fontSize: page === 'budgets' && '0.90rem',
     });
   }
   

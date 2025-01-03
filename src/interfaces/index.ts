@@ -136,6 +136,8 @@ export interface FundHeadingProps {
     theme: string;
     source: string;
     handleDeleteFund: (value: string) => void;
+    handleEditBudget: (valueA: string, valueB: number) => void;
+    max?: number;
 };
 
 export interface DeleteModalProps {
@@ -143,5 +145,12 @@ export interface DeleteModalProps {
     setShowDelete: (value: boolean) => void;
     source: string;
     handleDeleteFund: (value: string) => void;
+};
+
+export interface EditBudgetProps {
+    category: string;
+    setShowEdit: (value: boolean) => void;
+    handleEditBudget: (valueA: string, valueB: number) => void;
+    max: number;
 };
 

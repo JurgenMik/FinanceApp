@@ -1,8 +1,8 @@
 import React from 'react';
 import './BudgetDetails.scss';
-import type { Allocations, TransactionsState, Budget } from '../../../../interfaces/index';
+import type { Allocations, TransactionsState, Budget, FinanceProps } from '../../../../interfaces/index';
 import { useSelector } from 'react-redux';
-import { handleSpendingByCategory} from '../../../../utils/index';
+import { handleSpendingByCategory } from '../../../../utils/index';
 import ProgressBar from '../../../../components/ProgressBar/ProgressBar';
 import LatestSpending from '../LatestSpending/LatestSpending';
 import FundHeading from '../../../../components/FundHeading/FundHeading';
@@ -22,10 +22,25 @@ function BudgetDetails({finances, resources, setFinanceData}: Allocations | any)
     return { isNegative, remaining };
   }
 
-  const handleDeleteBudget = (fund: string) => {
+  const handleDeleteBudget = (fund: string): void => {
     const updatedBudgets = resources.filter((budget: Budget) => budget.category !== fund);
     
     setFinanceData({...finances, budgets: updatedBudgets});
+  }
+
+  const handleEditBudget = (fund: string, spendingLimit: number): void => {
+    if (spendingLimit === 0) { return; }
+
+    setFinanceData((prevFinances: FinanceProps) => {
+      const updatedBudgets = prevFinances.budgets.map((budget: Budget) => {
+        if (budget.category === fund) {
+          return {...budget, maximum: spendingLimit};
+        }
+        return budget;
+      });
+
+      return {...prevFinances, budgets: updatedBudgets};
+    });
   }
 
   return (
@@ -43,6 +58,8 @@ function BudgetDetails({finances, resources, setFinanceData}: Allocations | any)
                 theme={budget.theme}
                 source={'Budget'}
                 handleDeleteFund={handleDeleteBudget}
+                handleEditBudget={handleEditBudget}
+                max={budget.maximum}
               />      
             </div>
             <div>

@@ -10,3 +10,4 @@ export { IoIosSearch } from "react-icons/io";
 export { TiArrowSortedDown } from "react-icons/ti";
 export { HiOutlineDotsHorizontal } from "react-icons/hi";
 export { IoCloseCircleOutline } from "react-icons/io5";
+export { BsCurrencyDollar } from "react-icons/bs";

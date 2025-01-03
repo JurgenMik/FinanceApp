@@ -13,7 +13,10 @@ function NotFound() {
         />    
       </span>
       <h1>404 Page Not Found</h1>
-      <Link to="/" id="return">
+      <Link 
+        to="/" 
+        id="return"
+      >
         Return to homepage
       </Link>
     </div>
