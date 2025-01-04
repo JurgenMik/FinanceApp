@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './AddModal.scss';
 import { IoCloseCircleOutline, BsCurrencyDollar } from '../../assets/index';
-import type { AddModalProps } from '../../interfaces';
+import type { AddModalProps, Budget } from '../../interfaces';
 import { categoryOptions, themeOptions } from '../../utils/select';
 
 function AddModal({source, setShowAdd, handleAddNewFund}: AddModalProps) {
   
-  const [newBudget, setNewBudget] = useState({
+  const [newBudget, setNewBudget] = useState<Budget>({
     category: '',
     theme: '',
     maximum: 0

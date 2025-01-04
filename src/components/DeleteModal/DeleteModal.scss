@@ -1,25 +1,15 @@
 @import '../../variables/variables.scss';
+@import '../../variables/mixins.scss';
 
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.35); 
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    @include modal-overlay;
 }
 
 .main-container-delete-modal {
+    @include fund-container;
     width: 32.5rem;
     height: 13.5rem;
     position: absolute;
-    background-color: $White;
-    padding: 2rem;
-    border-radius: 0.75rem;
     top: 35%;
     left: 40%;
 
@@ -35,20 +25,11 @@
             font-size: 2rem;
         }
 
-        #close-modal {
-            font-size: 2rem;
-            color: $MedGrey;
-
-            &:hover {
-                cursor: pointer;
-            }
-        }
+        @include fund-close-modal;
     } 
 
     p {
-        font-size: 0.90rem;
-        color: $MedGrey;
-        font-weight: 400;
+        @include fund-desc;
     }
 
     .sub-container-delete-action {
@@ -72,14 +53,9 @@
         }
 
         #confirm-delete {
-            padding: 1rem;
+            @include fund-action-buttons;
             background-color: $Red;
-            border: none;
-            border-radius: 0.75rem;
-            color: $White;
-            font-weight: 600;
-            font-size: 0.90rem;
-
+           
             &:hover {
                 cursor: pointer;
                 background-color: $DarkRed;
