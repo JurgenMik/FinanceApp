@@ -10,8 +10,8 @@ function DeleteModal({category, setShowDelete, source, handleDeleteFund}: Delete
         <div className="sub-container-delete-modal-heading">
           <h2>Delete '{category}'?</h2>
           <IoCloseCircleOutline
-            onClick={() => setShowDelete(false)}
             id="close-modal" 
+            onClick={() => setShowDelete(false)}
           />
         </div> 
         <p>

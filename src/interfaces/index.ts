@@ -154,3 +154,9 @@ export interface EditBudgetProps {
     max: number;
 };
 
+export interface AddModalProps {
+    source: string;
+    setShowAdd: (value: boolean) => void;
+    handleAddNewFund: (value: Budget) => void;
+};
+

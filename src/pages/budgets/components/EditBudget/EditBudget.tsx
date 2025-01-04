@@ -17,8 +17,8 @@ function EditBudget({category, setShowEdit, handleEditBudget, max}: EditBudgetPr
         <div className="sub-container-edit-budget-heading">
           <h2>Edit Budget</h2>
           <IoCloseCircleOutline
-            onClick={() => setShowEdit(false)}
-            id="close-modal" 
+            id="close-modal"
+            onClick={() => setShowEdit(false)} 
           />
         </div>
         <p>
@@ -42,19 +42,19 @@ function EditBudget({category, setShowEdit, handleEditBudget, max}: EditBudgetPr
             </label>
             <input 
               id="target"
-              onChange={(e) => handleSpendingLimitChange(e)} 
               placeholder={String(max)}
+              onChange={(e) => handleSpendingLimitChange(e)} 
             />
             <BsCurrencyDollar id="target-input" />
           </div>
         </div>
         <button 
           type="button"
+          id="save"
           onClick={() => {
             handleEditBudget(category, newLimit);
             setShowEdit(false);
           }}
-          id="save"
         >
           Save Changes
         </button>
