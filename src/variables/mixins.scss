@@ -1,0 +1,83 @@
+
+@mixin modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.35); 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+@mixin fund-container {
+    background-color: $White;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    position: relative; 
+}
+
+@mixin fund-header {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem; 
+}
+
+@mixin fund-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    gap: 1rem; 
+}
+
+@mixin fund-inputs {
+    border: 1px solid $MedGrey;
+    width: 100%;
+    height: 3rem;
+    border-radius: 0.75rem;
+    padding: 0;
+    margin-top: 0.5rem;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    font-size: 0.90rem;
+}
+
+@mixin fund-action-buttons {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.75rem;
+    color: $White;
+    font-weight: 600;
+    font-size: 0.90rem;
+}
+
+@mixin fund-close-modal {
+    font-size: 2rem;
+    color: $MedGrey;
+
+    &:hover {
+        cursor: pointer;
+    }  
+}
+
+@mixin fund-desc {
+    font-size: 0.90rem;
+    color: $MedGrey;
+    font-weight: 400;  
+}
+
+@mixin target-input {
+    position: absolute;
+    left: 2.75rem;
+    top: 56%;
+    color: $MedGrey;  
+}
+

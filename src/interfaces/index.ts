@@ -117,6 +117,46 @@ export interface ViewTransactionsProps {
 
 export interface PaginateProps {
     page: number;
-    setPage: ((value: number) => void);
+    setPage: (value: number) => void;
+};
+
+export interface ProgressBarProps {
+    theme: string;
+    progress: number;
+    max: number;
+};
+
+export interface LatestSpendingProps {
+    transactions: Transaction[];
+    category: string;
+};
+
+export interface FundHeadingProps {
+    name: string;
+    theme: string;
+    source: string;
+    handleDeleteFund: (value: string) => void;
+    handleEditBudget: (valueA: string, valueB: number) => void;
+    max?: number;
+};
+
+export interface DeleteModalProps {
+    category: string;
+    setShowDelete: (value: boolean) => void;
+    source: string;
+    handleDeleteFund: (value: string) => void;
+};
+
+export interface EditBudgetProps {
+    category: string;
+    setShowEdit: (value: boolean) => void;
+    handleEditBudget: (valueA: string, valueB: number) => void;
+    max: number;
+};
+
+export interface AddModalProps {
+    source: string;
+    setShowAdd: (value: boolean) => void;
+    handleAddNewFund: (value: Budget) => void;
 };
 

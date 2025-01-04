@@ -1,0 +1,58 @@
+@import '../../variables/variables.scss';
+@import '../../variables/mixins.scss';
+
+.modal-overlay {
+    @include modal-overlay;
+}
+
+.main-container-add-fund {
+    @include fund-container; 
+    width: 32.5rem;
+    height: 27.5rem;
+    
+    p {
+        @include fund-desc;
+    }
+
+    .sub-container-add-fund-heading {
+         @include fund-header;
+        
+        h2 {
+            font-size: 2rem;
+        }
+
+        @include fund-close-modal;
+    }
+
+    .sub-container-add-details {
+        @include fund-details;
+
+        label {
+            font-size: 0.80rem;
+            color: $MedGrey;
+            font-weight: 800;
+        }
+
+        input, select {
+            @include fund-inputs;
+        }
+
+        #target {
+            padding-left: 2rem;
+        }
+
+        #target-input {
+            @include target-input;
+        }
+    }
+
+    button {
+        @include fund-action-buttons;
+        background-color: $DarkGrey;
+        
+        &:hover {
+            background-color: $MedGrey;
+            cursor: pointer;
+        }
+    }
+}

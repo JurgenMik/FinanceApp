@@ -8,7 +8,10 @@ function ViewDetails({header, text, linkTo}: ViewDetailsProps) {
   return ( 
     <div className="main-container-heading">
       <h2>{header}</h2>
-      <Link className="sub-container-viewDetails" to={linkTo}>
+      <Link 
+        className="sub-container-viewDetails" 
+        to={linkTo}
+      >
         <p>{text}</p>
         <MdArrowRight id="arrow" />
       </Link>

@@ -1,0 +1,86 @@
+@import '../../../../variables/variables.scss';
+
+.main-container-latest-spending {
+    width: 100%;
+    height: 22rem;
+    background-color: $LightBeige;
+    border-radius: 0.75rem;
+    margin-top: 1rem;
+    
+    .sub-container-latest-spending-heading {
+        width: 100%;
+        height: 5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin-left: 1.5rem;
+        }
+
+        #link {
+            display: flex;
+            align-items: center;
+            gap: -2rem;
+            margin-right: 1.5rem;
+            color: $MedGrey;
+            text-decoration: none;
+            font-size: 0.95rem;
+
+            #arrow-right {
+                font-size: 1.5rem;
+            }
+
+            &:hover {
+                color: $DarkGrey;
+                cursor: pointer;
+            }       
+        }    
+    }
+
+    .sub-container-spending {
+        width: 95%;
+        height: 5rem;
+        border-bottom: 1px solid $DimGrey;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+
+        .spending-source, .spending-info {
+            width: 80%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+
+            img {
+                width: 3rem;
+                height: 3rem;
+                border-radius: 50%;
+            }
+
+            h2 {
+                font-size: 0.90rem;
+            }
+        }
+
+        .spending-info {
+            width: 20%;
+            display: unset;
+            align-items: flex-end;
+            text-align: right; 
+            
+            p {
+                font-weight: 800;
+                font-size: 0.90rem;
+            }
+
+            #trans-date {
+                color: $MedGrey;
+                font-weight: 400;
+            }
+        }
+    }
+}

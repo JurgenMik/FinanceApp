@@ -1,11 +1,7 @@
 import type { Transaction } from '../interfaces/index';
 
-const defaultRoutes: string[] = ['/transactions', '/pots', '/bills', '/', '/budgets'];
-
-export default defaultRoutes;
-
 export const handleCalculateTotals = (entries: unknown[], unit: string): number => {
-  return entries.reduce((total: number, entry: any) => total + entry[unit], 0)
+  return entries.reduce((total: number, entry: any) => total + entry[unit], 0);
 };
 
 export const handleFormatDate = (date: string): string => {
@@ -28,8 +24,16 @@ export const handleBillingDateFormat = (date: Date): string => {
     }
   };
 
-  return `Monthly - ${day}${getDaySuffix(day)}`
+  return `Monthly - ${day}${getDaySuffix(day)}`;
 };
+
+export const handleGetDateRangeComponents = () => {
+  const targetMonth = 7;
+  const startDate   = new Date(2024, targetMonth - 1, 2);
+  const endDate     = new Date(2024, targetMonth, 31);
+
+  return { startDate, endDate };
+}
 
 export const handleSortEntries = (sort: string, entries: Transaction[], source: string): Transaction[] => {
   switch (sort) {
@@ -51,3 +55,22 @@ export const handleSortEntries = (sort: string, entries: Transaction[], source: 
       return entries;
   }
 };
+
+export const handleSpendingByCategory = (transactions: Transaction[], category: string): string => {
+  const { startDate, endDate } = handleGetDateRangeComponents()
+  
+  const recentSpendings = transactions.filter((transaction) => {
+    const transactionDate = new Date(transaction.date); 
+    
+    return transactionDate >= startDate      && 
+           transactionDate <= endDate        &&
+           transaction.category === category &&
+           !transaction.recurring;
+  });
+
+  return Math.abs(handleCalculateTotals(recentSpendings, "amount")).toFixed(2); 
+};
+
+const defaultRoutes: string[] = ['/transactions', '/pots', '/bills', '/', '/budgets'];
+
+export default defaultRoutes;
