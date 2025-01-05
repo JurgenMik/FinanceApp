@@ -158,6 +158,6 @@ export interface EditBudgetProps {
 export interface AddModalProps {
     source: string;
     setShowAdd: (value: boolean) => void;
-    handleAddNewFund: (value: Budget) => void;
+    handleAddNewFund: (value: Budget | Pot | any) => void;
 };
 

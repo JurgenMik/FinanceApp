@@ -58,7 +58,7 @@ function PotDetails({finances, resources, setFinanceData}: Savings | any) {
                 type="button"
                 onClick={() => ""}
               >
-                +Add Money
+                + Add Money
               </button>
               <button 
                 type="button"

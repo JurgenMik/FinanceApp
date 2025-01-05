@@ -1,47 +1,76 @@
 import React, { useState } from 'react';
 import './AddModal.scss';
 import { IoCloseCircleOutline, BsCurrencyDollar } from '../../assets/index';
-import type { AddModalProps, Budget } from '../../interfaces';
+import type { AddModalProps, Budget, Pot } from '../../interfaces';
 import { categoryOptions, themeOptions } from '../../utils/select';
 
 function AddModal({source, setShowAdd, handleAddNewFund}: AddModalProps) {
+
+  const [newPot, setNewPot] = useState<Pot>({
+    name: '',
+    target: 0.00,
+    total: 0.00,
+    theme: ''
+  });
   
   const [newBudget, setNewBudget] = useState<Budget>({
     category: '',
     theme: '',
-    maximum: 0
+    maximum: 0.00
   });
   
   const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setNewBudget({...newBudget, theme: e.target.value});
+    if (source === "Budget") {
+      setNewBudget({...newBudget, theme: e.target.value});
+    }
+    else {
+      setNewPot({...newPot, theme: e.target.value});
+    }
   }
 
   const handleTargetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewBudget({...newBudget, maximum: parseInt(e.target.value)});
+    if (source === "Budget") {
+      setNewBudget({...newBudget, maximum: parseInt(e.target.value)});
+    }
+    else {
+      setNewPot({...newPot, target: parseInt(e.target.value)});
+    }
   }
 
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setNewBudget({...newBudget, category: e.target.value});
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
+    if (source === "Budget") {
+      setNewBudget({...newBudget, category: e.target.value});
+    }
+    else {
+      setNewPot({...newPot, name: e.target.value}); 
+    }
   }
 
   return ( 
     <div className="modal-overlay">
       <div className="main-container-add-fund">
         <div className="sub-container-add-fund-heading">
-          {source === 'Budget' && <h2>Add New Budget</h2>}
+          {source === 'Budget' ? <h2>Add New Budget</h2> : <h2>Add New Pot</h2>}
           <IoCloseCircleOutline
             id="close-modal" 
             onClick={() => setShowAdd(false)}
           />
         </div>
-        {source === 'Budget' &&
+        {source === 'Budget' 
+        ?
           <p>
             Choose a category to set a spending budget.
             These categories can help you monitor spending.
           </p>
+        :
+          <p>
+            Create a pot to set savings targets. These can help keep you on 
+            track as yousave for special purchases.
+          </p>
         }
         <div className="sub-container-add-details">
-          {source === 'Budget' &&
+          {source === 'Budget' 
+          ?
             <div>
               <label htmlFor="category">
                 Budget Category
@@ -62,10 +91,21 @@ function AddModal({source, setShowAdd, handleAddNewFund}: AddModalProps) {
                  })}
                </select>
             </div>
+          :
+            <div>
+              <label htmlFor="target">
+                Pot Name
+              </label>
+              <input 
+                placeholder={"e.g Rainy Days"}
+                onChange={(e) => handleCategoryChange(e)} 
+              />
+              <BsCurrencyDollar id="target-input" />
+            </div>
           }
           <div>
             <label htmlFor="target">
-              {source === 'Budget' && 'Maximum Spend'}
+              {source === 'Budget' ? 'Maximum Spend' : 'Target'}
             </label>
             <input 
               id="target"
@@ -98,9 +138,11 @@ function AddModal({source, setShowAdd, handleAddNewFund}: AddModalProps) {
         <button 
           type="button"
           id="save"
-          onClick={() => {handleAddNewFund(newBudget)}}
+          onClick={() => {source === "Budget" ? 
+            handleAddNewFund(newBudget) : handleAddNewFund(newPot)
+          }}
         >
-          {source === 'Budget' && 'Add Budget'}
+          {source === 'Budget' ? 'Add Budget' : 'Add Pot'}
         </button>
       </div>  
     </div> 
