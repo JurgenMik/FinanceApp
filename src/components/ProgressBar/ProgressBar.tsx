@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import type { ProgressBarProps } from '../../interfaces';
 
-const ProgressContainer = styled.div`
-  width: 100%; 
-  height: 1.75rem;
+const ProgressContainer = styled.div<{ source: string }>`
+  width: 100%;
+  height: ${({ source }) => (source === 'Pot' ? '0.5rem' : '1.75rem')};
   background-color: hsl(30, 36%, 96%); 
   border-radius: 0.25rem;
 `;
@@ -17,12 +17,12 @@ const ProgressBarInner = styled.div<{ width: number; theme: string }>`
   border-radius: 0.25rem; 
 `;
 
-function ProgressBar({max, progress, theme}: ProgressBarProps) {
+function ProgressBar({max, progress, theme, source}: ProgressBarProps) {
 
   const progressPercentage = (progress / max) * 100;
 
   return (
-    <ProgressContainer>
+    <ProgressContainer source={source}>
       <ProgressBarInner
         width={progressPercentage}
         role="progressbar"

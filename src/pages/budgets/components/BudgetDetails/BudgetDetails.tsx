@@ -70,6 +70,7 @@ function BudgetDetails({finances, resources, setFinanceData}: Allocations | any)
                 max={budget.maximum}
                 progress={handleBudgetSpendingAsInt(budget.category)} 
                 theme={budget.theme}
+                source={''}
               />
               <div className="container-budget-balance">
                 <div className="container-spent">

@@ -124,6 +124,7 @@ export interface ProgressBarProps {
     theme: string;
     progress: number;
     max: number;
+    source: string;
 };
 
 export interface LatestSpendingProps {
