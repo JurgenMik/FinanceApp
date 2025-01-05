@@ -3,7 +3,7 @@ import './Pots.scss';
 import PotDetails from './components/PotDetails/PotDetails';
 import type { FinanceProps } from '../../interfaces/index';
 
-function Pots({finances}: FinanceProps | any) {
+function Pots({finances, setFinanceData}: FinanceProps | any) {
   return ( 
     <div className="main-container-pot-pots">
       <div className="sub-container-pot-heading">
@@ -18,7 +18,11 @@ function Pots({finances}: FinanceProps | any) {
         </button>
       </div>
       <div className="sub-container-pot-pots">
-        <PotDetails resources={finances.pots} />
+        <PotDetails 
+          finances={finances}
+          resources={finances.pots} 
+          setFinanceData={setFinanceData}
+        />
       </div>
     </div>
   );

@@ -113,8 +113,8 @@ function App() {
               <Routes>
                 <Route path="/" element={<Overview finances={finances} />} />
                 <Route path="/Bills" element={<Bills />} />
-                <Route path="/Budgets" element={<Budgets finances={finances} setFinanceData={setFinanceData}/>} />
-                <Route path="/Pots" element={<Pots finances={finances} />} />
+                <Route path="/Budgets" element={<Budgets finances={finances} setFinanceData={setFinanceData} />} />
+                <Route path="/Pots" element={<Pots finances={finances} setFinanceData={setFinanceData} />} />
                 <Route path="/Transactions" element={<Transactions />} />
               </Routes>
           </div>

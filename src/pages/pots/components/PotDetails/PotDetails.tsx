@@ -4,10 +4,16 @@ import type { Savings, Pot } from '../../../../interfaces/index';
 import FundHeading from '../../../../components/FundHeading/FundHeading';
 import ProgressBar from '../../../../components/ProgressBar/ProgressBar';
 
-function PotDetails({resources}: Savings) {
+function PotDetails({finances, resources, setFinanceData}: Savings | any) {
 
   const handleTargetPercentage = (target: number, total: number) => {
     return (total / target * 100).toFixed(1);
+  }
+
+  const handleDeletePot = (fund: string): void => {
+    const updatedPots = resources.filter((pot: Pot) => pot.name !== fund);
+      
+    setFinanceData({...finances, pots: updatedPots});
   }
 
   return ( 
@@ -23,7 +29,7 @@ function PotDetails({resources}: Savings) {
                 name={resource.name}
                 theme={resource.theme}
                 source='Pot'
-                handleDeleteFund={() => ""}
+                handleDeleteFund={handleDeletePot}
                 handleEditBudget={() => ""}
               />
             </div>
