@@ -139,6 +139,8 @@ export interface FundHeadingProps {
     handleDeleteFund: (value: string) => void;
     handleEditBudget: (valueA: string, valueB: number) => void;
     max?: number;
+    target: number;
+    handleEditPot: (valueA: string, valueB: number) => void;
 };
 
 export interface DeleteModalProps {
@@ -153,6 +155,13 @@ export interface EditBudgetProps {
     setShowEdit: (value: boolean) => void;
     handleEditBudget: (valueA: string, valueB: number) => void;
     max: number;
+};
+
+export interface EditPotProps {
+    name: string;
+    setShowEdit: (value: boolean) => void;
+    handleEditPot: (valueA: string, valueB: number) => void;
+    target: number;
 };
 
 export interface AddModalProps {

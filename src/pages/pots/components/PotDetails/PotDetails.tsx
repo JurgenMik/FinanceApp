@@ -1,6 +1,6 @@
 import React from 'react';
 import './PotDetails.scss';
-import type { Savings, Pot } from '../../../../interfaces/index';
+import type { Savings, Pot, FinanceProps } from '../../../../interfaces/index';
 import FundHeading from '../../../../components/FundHeading/FundHeading';
 import ProgressBar from '../../../../components/ProgressBar/ProgressBar';
 
@@ -14,6 +14,21 @@ function PotDetails({finances, resources, setFinanceData}: Savings | any) {
     const updatedPots = resources.filter((pot: Pot) => pot.name !== fund);
       
     setFinanceData({...finances, pots: updatedPots});
+  }
+
+  const handleEditPot = (fund: string, target: number) => {
+    if (target === 0) { return; }
+ 
+    setFinanceData((prevFinances: FinanceProps) => {
+      const updatedPots = prevFinances.pots.map((pot: Pot) => {
+        if (pot.name === fund) {
+          return {...pot, target: target};
+        }
+        return pot;
+      });
+
+      return {...prevFinances, pots: updatedPots};
+    });
   }
 
   return ( 
@@ -31,6 +46,8 @@ function PotDetails({finances, resources, setFinanceData}: Savings | any) {
                 source='Pot'
                 handleDeleteFund={handleDeletePot}
                 handleEditBudget={() => ""}
+                handleEditPot={handleEditPot}
+                target={resource.target}
               />
             </div>
             <div className="sub-container-pot-details">

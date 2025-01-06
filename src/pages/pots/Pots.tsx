@@ -10,12 +10,11 @@ function Pots({finances, setFinanceData}: FinanceProps | any) {
   
   const handleAddNewPot = (pot: Pot) => {
     if (pot.name === "") { return; }
-    
+
     setFinanceData({...finances,
       pots: [...finances.pots, pot]
     });
   }
-
 
   return ( 
     <div className="main-container-pot-pots">
