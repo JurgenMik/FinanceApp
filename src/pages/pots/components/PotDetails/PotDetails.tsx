@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PotDetails.scss';
 import type { Savings, Pot, FinanceProps } from '../../../../interfaces/index';
 import FundHeading from '../../../../components/FundHeading/FundHeading';
 import ProgressBar from '../../../../components/ProgressBar/ProgressBar';
+import TransactionModal from '../TransactionModal/TransactionModal';
+import { handleTargetPercentage } from '../../../../utils';
 
 function PotDetails({finances, resources, setFinanceData}: Savings | any) {
 
-  const handleTargetPercentage = (target: number, total: number) => {
-    return (total / target * 100).toFixed(1);
-  }
+  const [showAddOrWithdraw, setShowTransaction] = useState<{
+    type: string;
+    name: string;
+  }>({
+    type: "",
+    name: "",
+  });
 
   const handleDeletePot = (fund: string): void => {
     const updatedPots = resources.filter((pot: Pot) => pot.name !== fund);
@@ -28,6 +34,13 @@ function PotDetails({finances, resources, setFinanceData}: Savings | any) {
       });
 
       return {...prevFinances, pots: updatedPots};
+    });
+  }
+
+  const handleShowTransactionModal = (type: string, pot: string) => {
+    setShowTransaction({...showAddOrWithdraw, 
+      type: type, 
+      name: pot
     });
   }
 
@@ -73,17 +86,28 @@ function PotDetails({finances, resources, setFinanceData}: Savings | any) {
             <div className="sub-container-pot-details-action">
               <button 
                 type="button"
-                onClick={() => ""}
+                onClick={() => 
+                  handleShowTransactionModal("add", resource.name)
+                }
               >
                 + Add Money
               </button>
               <button 
                 type="button"
-                onClick={() => ""}
+                onClick={() => 
+                  handleShowTransactionModal("withdraw", resource.name)
+                }
               >
                 Withdraw
               </button>
             </div>
+            {showAddOrWithdraw.name === resource.name && showAddOrWithdraw.type &&
+              <TransactionModal 
+                showAddOrWithdraw={showAddOrWithdraw}
+                resource={resource}
+                setShowTransaction={setShowTransaction}
+              />
+            }
           </div>
         )
       })}

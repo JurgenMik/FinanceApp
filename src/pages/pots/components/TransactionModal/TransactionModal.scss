@@ -1,0 +1,64 @@
+@import '../../../../variables/variables.scss';
+@import '../../../../variables/mixins.scss';
+
+.modal-overlay {
+    @include modal-overlay;
+}
+
+.main-container-transaction {
+    @include fund-container;
+    width: 37.5rem;
+    height: 20rem;
+    
+    p {
+        @include fund-desc;
+    }
+
+    .sub-container-transaction-heading {
+        @include fund-header;
+         
+        h2 {
+            font-size: 2rem;
+        }
+
+        @include fund-close-modal;
+    }
+
+    .sub-container-pot-details {
+        @include pot-details-container;
+        height: 6.5rem; 
+    }
+
+    .sub-container-transaction-action {
+        @include fund-details;
+
+        label {
+            font-size: 0.80rem;
+            color: $MedGrey;
+            font-weight: 800;
+        }
+
+        input {
+            @include fund-inputs;
+        }
+
+        #target {
+            padding-left: 2rem;
+        }
+
+        #target-input {
+            @include target-input;
+            top: 67.5%;
+        }
+    }
+
+    button {
+        @include fund-action-buttons;
+        background-color: $DarkGrey;
+
+        &:hover {
+            background-color: $MedGrey;
+            cursor: pointer;
+        }
+    }
+}

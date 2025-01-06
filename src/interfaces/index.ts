@@ -170,3 +170,9 @@ export interface AddModalProps {
     handleAddNewFund: (value: Budget | Pot | any) => void;
 };
 
+export interface TransactionModalProps {
+    showAddOrWithdraw: {type: string, name: string};
+    resource: Pot;
+    setShowTransaction: (value: object | any) => void;
+};
+

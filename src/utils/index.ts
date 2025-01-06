@@ -33,7 +33,7 @@ export const handleGetDateRangeComponents = () => {
   const endDate     = new Date(2024, targetMonth, 31);
 
   return { startDate, endDate };
-}
+};
 
 export const handleSortEntries = (sort: string, entries: Transaction[], source: string): Transaction[] => {
   switch (sort) {
@@ -69,6 +69,10 @@ export const handleSpendingByCategory = (transactions: Transaction[], category: 
   });
 
   return Math.abs(handleCalculateTotals(recentSpendings, "amount")).toFixed(2); 
+};
+
+export const handleTargetPercentage = (target: number, total: number): string => {
+  return (total / target * 100).toFixed(1);
 };
 
 const defaultRoutes: string[] = ['/transactions', '/pots', '/bills', '/', '/budgets'];
