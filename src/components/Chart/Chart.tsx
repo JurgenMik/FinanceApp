@@ -9,6 +9,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import type { Transaction, TransactionsState, Budget, Allocations } from '../../interfaces/index';
 import { handleCalculateTotals, handleGetDateRangeComponents } from '../../utils';
+import { handleGetChartConfig } from '../../utils/chart';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -19,26 +20,7 @@ function Chart({resources, page}: Allocations | any) {
   let bgColors: string[] = resources.map((budget: Budget) => budget.theme);
   let budgets: number[] = resources.map((budget: Budget) => budget.maximum);
 
-  const chartData = {
-    datasets: [
-      {
-        data: budgets,
-        backgroundColor: bgColors,
-        borderColor: bgColors,
-        borderWidth: 1,
-        radius: page === 'budgets' ? '75%' : '100%',
-        cutout: '50%'
-      },
-      { 
-        data: budgets,
-        backgroundColor: "rgba(210, 215, 211, 0.35)",
-        borderWidth: 1,
-        radius: page === 'budgets' ? '75%' : '100%',
-        cutout: '60%'
-      },
-    ],
-  };
-
+  const chartData = handleGetChartConfig(budgets, bgColors, page)
   const chartOptions = { responsive: true };
   
   const calculateTotalSummary = (spendings: Transaction[]): number => {
