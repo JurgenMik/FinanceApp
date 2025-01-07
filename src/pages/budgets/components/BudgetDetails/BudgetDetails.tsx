@@ -59,7 +59,9 @@ function BudgetDetails({finances, resources, setFinanceData}: Allocations | any)
                 source={'Budget'}
                 handleDeleteFund={handleDeleteBudget}
                 handleEditBudget={handleEditBudget}
+                handleEditPot={() => ""}
                 max={budget.maximum}
+                target={0}
               />      
             </div>
             <div>
@@ -70,6 +72,7 @@ function BudgetDetails({finances, resources, setFinanceData}: Allocations | any)
                 max={budget.maximum}
                 progress={handleBudgetSpendingAsInt(budget.category)} 
                 theme={budget.theme}
+                source={'Budget'}
               />
               <div className="container-budget-balance">
                 <div className="container-spent">

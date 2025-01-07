@@ -1,0 +1,28 @@
+@import '../../variables/variables.scss';
+@import '../../variables/mixins.scss';
+
+.main-container-pot-pots {
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100vh; 
+    overflow-y: auto; 
+    box-sizing: border-box;
+
+    .sub-container-pot-heading {
+        width: 95%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+            @include add-fund;
+        }
+    }
+
+    .sub-container-pot-pots {
+        @include fund;
+        grid-template-columns: 45% 45%;
+        column-gap: 3.25rem;
+        row-gap: 0.5rem;
+    }
+}

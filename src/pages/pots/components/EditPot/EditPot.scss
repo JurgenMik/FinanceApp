@@ -1,0 +1,59 @@
+@import '../../../../variables/variables.scss';
+@import '../../../../variables/mixins.scss';
+
+.modal-overlay {
+    @include modal-overlay;
+}
+
+.main-container-edit-pot {
+    @include fund-container;
+    width: 32.5rem;
+    height: 20rem;
+    
+    p {
+        @include fund-desc;
+    }
+
+    .sub-container-edit-pot-heading {
+        @include fund-header;
+         
+        h2 {
+            font-size: 2rem;
+        }
+
+        @include fund-close-modal;
+    }
+
+    .sub-container-edit-details {
+        @include fund-details;
+
+        label {
+            font-size: 0.80rem;
+            color: $MedGrey;
+            font-weight: 800;
+        }
+
+        input {
+            @include fund-inputs;
+        }
+
+        #target {
+            padding-left: 2rem;
+        }
+
+        #target-input {
+            @include target-input;
+            top: 68.5%;
+        }
+    }
+
+    button {
+        @include fund-action-buttons;
+        background-color: $DarkGrey;
+
+        &:hover {
+            background-color: $MedGrey;
+            cursor: pointer;
+        }
+    }
+}

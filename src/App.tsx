@@ -51,12 +51,18 @@ function App() {
       dispatch(setTransactions(mockData.transactions));
     }, 3000);
   }
-  
-  const handleRecurringBillsByCat = (type: string) => {
+
+  const handleGetDateRanges = () => {
     const targetMonth = 7; 
     const fromDate    = new Date(2024, targetMonth - 1, 2);
     const currentDate = new Date(2024, targetMonth - 1, 26);
     const dueRange    = new Date(2024, targetMonth, 4);
+
+    return { fromDate, currentDate, dueRange };
+  }
+  
+  const handleRecurringBillsByCat = (type: string) => {
+    const { fromDate, currentDate, dueRange } = handleGetDateRanges();
 
     const bills = transactionsState.transactions.filter((transaction) => {
         const transactionDate = new Date(transaction.date); 
@@ -107,8 +113,8 @@ function App() {
               <Routes>
                 <Route path="/" element={<Overview finances={finances} />} />
                 <Route path="/Bills" element={<Bills />} />
-                <Route path="/Budgets" element={<Budgets finances={finances} setFinanceData={setFinanceData}/>} />
-                <Route path="/Pots" element={<Pots />} />
+                <Route path="/Budgets" element={<Budgets finances={finances} setFinanceData={setFinanceData} />} />
+                <Route path="/Pots" element={<Pots finances={finances} setFinanceData={setFinanceData} />} />
                 <Route path="/Transactions" element={<Transactions />} />
               </Routes>
           </div>

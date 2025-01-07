@@ -4,8 +4,19 @@ import { HiOutlineDotsHorizontal } from '../../assets/index';
 import type { FundHeadingProps } from '../../interfaces';
 import DeleteModal from '../../components/DeleteModal/DeleteModal';
 import EditBudget from '../../pages/budgets/components/EditBudget/EditBudget';
+import EditPot from '../../pages/pots/components/EditPot/EditPot';
 
-function FundHeading({name, theme, source, handleDeleteFund, handleEditBudget, max}: FundHeadingProps) {
+function FundHeading({
+  name, 
+  theme, 
+  source, 
+  handleDeleteFund, 
+  handleEditBudget, 
+  max, 
+  handleEditPot, 
+  target
+}: FundHeadingProps
+) {
 
   const [showCatOptions, setShowOptions] = useState<string>('');
   const [showDelete, setShowDelete] = useState<boolean>(false);
@@ -51,14 +62,22 @@ function FundHeading({name, theme, source, handleDeleteFund, handleEditBudget, m
           handleDeleteFund={handleDeleteFund}
         />
       } 
-      {showEdit && source === 'Budget' &&
+      {showEdit && source === 'Budget' 
+      ? (
         <EditBudget
           category={name} 
           setShowEdit={setShowEdit}
           handleEditBudget={handleEditBudget}
           max={max ?? 0}
         />
-      } 
+      ) : showEdit && source === 'Pot' && (
+        <EditPot
+          name={name}
+          setShowEdit={setShowEdit}
+          handleEditPot={handleEditPot}
+          target={target}
+        />
+      )}
     </> 
   );
 }

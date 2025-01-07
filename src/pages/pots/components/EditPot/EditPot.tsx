@@ -1,49 +1,49 @@
 import React, { useState } from 'react';
-import './EditBudget.scss';
+import './EditPot.scss';
 import { IoCloseCircleOutline, BsCurrencyDollar } from '../../../../assets/index';
-import type { EditBudgetProps } from '../../../../interfaces';
+import type { EditPotProps } from '../../../../interfaces';
 
-function EditBudget({category, setShowEdit, handleEditBudget, max}: EditBudgetProps) {
+function EditPot({name, setShowEdit, handleEditPot, target}: EditPotProps) {
 
-  const [newLimit, setNewLimit] = useState<number>(0);
+  const [newTotal, setNewTotal] = useState<number>(0);
 
-  const handleSpendingLimitChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setNewLimit(parseInt(e.target.value));
+  const handleTargetChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setNewTotal(parseInt(e.target.value));
   }
 
   return ( 
     <div className="modal-overlay">
-      <div className="main-container-edit-budget">
-        <div className="sub-container-edit-budget-heading">
-          <h2>Edit Budget</h2>
+      <div className="main-container-edit-pot">
+        <div className="sub-container-edit-pot-heading">
+          <h2>Edit Pot</h2>
           <IoCloseCircleOutline
             id="close-modal"
             onClick={() => setShowEdit(false)} 
           />
         </div>
         <p>
-          As your budgets change, feel free to update 
-          your spending limits.
+          If your saving targets change, 
+          feel free to update your pots.
         </p>
         <div className="sub-container-edit-details">
           <div>
             <label htmlFor="category">
-              Budget Category
+              Pot Name
             </label>
             <input 
               id="category"
-              value={category} 
+              value={name} 
               readOnly 
             />
           </div>
           <div>
             <label htmlFor="target">
-              Maximum Spend
+              Target
             </label>
             <input 
               id="target"
-              placeholder={String(max.toFixed(2))}
-              onChange={(e) => handleSpendingLimitChange(e)} 
+              placeholder={String(target.toFixed(2))}
+              onChange={(e) => handleTargetChange(e)} 
             />
             <BsCurrencyDollar id="target-input" />
           </div>
@@ -52,7 +52,7 @@ function EditBudget({category, setShowEdit, handleEditBudget, max}: EditBudgetPr
           type="button"
           id="save"
           onClick={() => {
-            handleEditBudget(category, newLimit);
+            handleEditPot(name, newTotal, "target");
             setShowEdit(false);
           }}
         >
@@ -63,4 +63,4 @@ function EditBudget({category, setShowEdit, handleEditBudget, max}: EditBudgetPr
   );
 }
 
-export default EditBudget;
+export default EditPot;

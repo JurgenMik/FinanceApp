@@ -124,6 +124,7 @@ export interface ProgressBarProps {
     theme: string;
     progress: number;
     max: number;
+    source: string;
 };
 
 export interface LatestSpendingProps {
@@ -138,6 +139,8 @@ export interface FundHeadingProps {
     handleDeleteFund: (value: string) => void;
     handleEditBudget: (valueA: string, valueB: number) => void;
     max?: number;
+    target: number;
+    handleEditPot: (valueA: string, valueB: number, valueC: string) => void;
 };
 
 export interface DeleteModalProps {
@@ -154,9 +157,23 @@ export interface EditBudgetProps {
     max: number;
 };
 
+export interface EditPotProps {
+    name: string;
+    setShowEdit: (value: boolean) => void;
+    handleEditPot: (valueA: string, valueB: number, valueC: string) => void;
+    target: number;
+};
+
 export interface AddModalProps {
     source: string;
     setShowAdd: (value: boolean) => void;
-    handleAddNewFund: (value: Budget) => void;
+    handleAddNewFund: (value: Budget | Pot | any) => void;
+};
+
+export interface TransactionModalProps {
+    showAddOrWithdraw: {type: string, name: string};
+    resource: Pot;
+    setShowTransaction: (value: object | any) => void;
+    handleEditPot: (valueA: string, valueB: number, valueC: string) => void;
 };
 
