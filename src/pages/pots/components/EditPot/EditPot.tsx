@@ -52,7 +52,7 @@ function EditPot({name, setShowEdit, handleEditPot, target}: EditPotProps) {
           type="button"
           id="save"
           onClick={() => {
-            handleEditPot(name, newTotal);
+            handleEditPot(name, newTotal, "target");
             setShowEdit(false);
           }}
         >

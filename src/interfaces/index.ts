@@ -140,7 +140,7 @@ export interface FundHeadingProps {
     handleEditBudget: (valueA: string, valueB: number) => void;
     max?: number;
     target: number;
-    handleEditPot: (valueA: string, valueB: number) => void;
+    handleEditPot: (valueA: string, valueB: number, valueC: string) => void;
 };
 
 export interface DeleteModalProps {
@@ -160,7 +160,7 @@ export interface EditBudgetProps {
 export interface EditPotProps {
     name: string;
     setShowEdit: (value: boolean) => void;
-    handleEditPot: (valueA: string, valueB: number) => void;
+    handleEditPot: (valueA: string, valueB: number, valueC: string) => void;
     target: number;
 };
 
@@ -174,5 +174,6 @@ export interface TransactionModalProps {
     showAddOrWithdraw: {type: string, name: string};
     resource: Pot;
     setShowTransaction: (value: object | any) => void;
+    handleEditPot: (valueA: string, valueB: number, valueC: string) => void;
 };
 

@@ -5,7 +5,7 @@ import { IoCloseCircleOutline, BsCurrencyDollar } from '../../../../assets/index
 import type { TransactionModalProps } from '../../../../interfaces/index';
 import { handleTargetPercentage } from '../../../../utils';
 
-function TransactionModal({showAddOrWithdraw, resource, setShowTransaction}: TransactionModalProps) {
+function TransactionModal({showAddOrWithdraw, resource, setShowTransaction, handleEditPot}: TransactionModalProps) {
 
   const [transaction, setTransaction] = useState<number>(0);
   const [newAmount, setNewAmount] = useState<number>(resource.total); 
@@ -86,7 +86,7 @@ function TransactionModal({showAddOrWithdraw, resource, setShowTransaction}: Tra
         <button 
           type="button" 
           id="save" 
-          onClick={() => {}}
+          onClick={() => {handleEditPot(resource.name, newAmount, "total")}}
         >
           {showAddOrWithdraw.type === "add" 
             ? 'Confirm Addition' 

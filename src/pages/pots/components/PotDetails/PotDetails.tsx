@@ -22,13 +22,13 @@ function PotDetails({finances, resources, setFinanceData}: Savings | any) {
     setFinanceData({...finances, pots: updatedPots});
   }
 
-  const handleEditPot = (fund: string, target: number) => {
-    if (target === 0) { return; }
- 
+  const handleEditPot = (fund: string, value: number, property: string) => {
+    if (value === 0 && property === "target") { return; }
+
     setFinanceData((prevFinances: FinanceProps) => {
       const updatedPots = prevFinances.pots.map((pot: Pot) => {
         if (pot.name === fund) {
-          return {...pot, target: target};
+          return {...pot, [property]: value};
         }
         return pot;
       });
@@ -106,6 +106,7 @@ function PotDetails({finances, resources, setFinanceData}: Savings | any) {
                 showAddOrWithdraw={showAddOrWithdraw}
                 resource={resource}
                 setShowTransaction={setShowTransaction}
+                handleEditPot={handleEditPot}
               />
             }
           </div>
