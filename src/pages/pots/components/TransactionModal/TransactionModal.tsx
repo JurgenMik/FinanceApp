@@ -17,7 +17,7 @@ function TransactionModal({showAddOrWithdraw, resource, setShowTransaction, hand
   const handleCalculateNewAmount = () => {
     const updatedAmount = showAddOrWithdraw.type === "add"
         ? resource.total + transaction
-        : resource.total - transaction;
+        : Math.max(resource.total - transaction, 0);
         
     setNewAmount(updatedAmount);
   };
@@ -86,7 +86,8 @@ function TransactionModal({showAddOrWithdraw, resource, setShowTransaction, hand
         <button 
           type="button" 
           id="save" 
-          onClick={() => {handleEditPot(resource.name, newAmount, "total")}}
+          onClick={() => {
+            handleEditPot(resource.name, newAmount, "total")}}
         >
           {showAddOrWithdraw.type === "add" 
             ? 'Confirm Addition' 
