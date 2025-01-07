@@ -40,6 +40,8 @@ Personal Finance App [Frontend Mentor Challenge](https://www.frontendmentor.io/c
 
 ![image](https://github.com/user-attachments/assets/d3bb1247-ff23-4e5c-8ab0-0e4810a20417)
 
+![image](https://github.com/user-attachments/assets/7e8db204-2a95-497d-bc07-02972d73bfaa)
+
 ![image](https://github.com/user-attachments/assets/124885df-f348-44b2-a6bf-6918bf54b090)
 
 ![image](https://github.com/user-attachments/assets/ea85d3c8-48a7-4f35-9afd-f1519dda84ad)
@@ -49,6 +51,8 @@ Personal Finance App [Frontend Mentor Challenge](https://www.frontendmentor.io/c
 ![image](https://github.com/user-attachments/assets/71775c84-072d-46a1-b499-8a0550c1916c)
 
 ![image](https://github.com/user-attachments/assets/22846b78-5b00-4070-a9d9-a6e784a49b81)
+
+![image](https://github.com/user-attachments/assets/5923e600-883b-4892-83ee-0ba5b460b58f)
 
 ### Built With
 * <strong>React</strong>
