@@ -5,7 +5,7 @@
     display: flex;
     gap: 1.5rem;
     align-items: center;
-
+    
     span {
         width: 1.5rem;
         height: 1.5rem;
@@ -14,9 +14,9 @@
 
     .select-options {
         width: 6.5rem;
-        position: fixed;
-        right: 7.5rem;
-        top: 13.5rem;
+        position: absolute;
+        right: 0;
+        top: 2.25rem;
         background-color: $White;
         border-radius: 0.75rem;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05), 
