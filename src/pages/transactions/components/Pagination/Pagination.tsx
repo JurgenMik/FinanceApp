@@ -1,20 +1,25 @@
 import React from 'react';
 import './Pagination.scss';
 import { MdArrowLeft, MdArrowRight } from '../../../../assets/index';
-import type { PaginateProps } from '../../../../interfaces';
+import type { PaginateProps, TransactionsState } from '../../../../interfaces';
+import { useSelector } from 'react-redux';
 
 function Pagination({page, setPage}: PaginateProps) {
 
+  const transactionsState = useSelector((state: {transactions: TransactionsState}) => state.transactions);
+
+  const totalPages = Math.ceil(transactionsState.transactions.length / 5);
+
   const handleUpdatePageCount = (action: string): void => {
-    if (action === 'previous' && page !== 1) { 
-        setPage(page - 1); 
+    if (action === 'previous' && page > 1) { 
+      setPage(page - 1); 
     } 
-    else if (action === 'next' && page !== 10) { 
-        setPage(page + 1); 
+    else if (action === 'next' && page < totalPages) { 
+      setPage(page + 1); 
     }
   }
 
-  const paginatorButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const paginatorButtons = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return ( 
     <div className="main-container-pagination">
