@@ -6,6 +6,9 @@ import { categoryOptions, themeOptions } from '../../utils/select';
 
 function AddModal({source, setShowAdd, handleAddNewFund}: AddModalProps) {
 
+  const [charCount, setCharCount] = useState<number>(20);
+  const [isValidCount, setIsValid] = useState<boolean>(true);
+
   const [newPot, setNewPot] = useState<Pot>({
     name: '',
     target: 0.00,
@@ -42,8 +45,24 @@ function AddModal({source, setShowAdd, handleAddNewFund}: AddModalProps) {
       setNewBudget({...newBudget, category: e.target.value});
     }
     else {
+      let maxChar = 20;
+      
+      setCharCount(maxChar - e.target.value.length);
+
+      maxChar - e.target.value.length <= 0 ? setIsValid(false) : setIsValid(true);
+
       setNewPot({...newPot, name: e.target.value}); 
     }
+  }
+
+  const handleValidateCharStyle = () => {
+    return ({
+      color: !isValidCount ? 'red' : 'hsl(0, 0%, 41%)'
+    }); 
+  }
+
+  const handleValidatePotAdd = () => {
+    if (newPot.name && isValidCount) { handleAddNewFund(newPot); }
   }
 
   return ( 
@@ -97,10 +116,21 @@ function AddModal({source, setShowAdd, handleAddNewFund}: AddModalProps) {
                 Pot Name
               </label>
               <input 
+                style={{borderColor: !isValidCount ? 'red' : ''}}
                 placeholder={"e.g Rainy Days"}
                 onChange={(e) => handleCategoryChange(e)} 
               />
               <BsCurrencyDollar id="target-input" />
+              {source === 'Pot' && 
+                <div className="container-validate-char">
+                  <span 
+                    id="char-left"
+                    style={handleValidateCharStyle()}
+                  >
+                    {charCount} characters left
+                  </span>
+                </div>
+              }
             </div>
           }
           <div>
@@ -139,7 +169,7 @@ function AddModal({source, setShowAdd, handleAddNewFund}: AddModalProps) {
           type="button"
           id="save"
           onClick={() => {source === "Budget" ? 
-            handleAddNewFund(newBudget) : handleAddNewFund(newPot)
+            handleAddNewFund(newBudget) : handleValidatePotAdd() 
           }}
         >
           {source === 'Budget' ? 'Add Budget' : 'Add Pot'}
