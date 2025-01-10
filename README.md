@@ -14,7 +14,7 @@ Personal Finance App [Frontend Mentor Challenge](https://www.frontendmentor.io/c
 * Add money to and withdraw money from pots
 * View recurring bills and the <strong>status</strong> of each for the current month
 * Search and sort recurring bills
-* ~~Receive <strong>validation</strong> messages if required form fields aren't completed~~
+* Receive <strong>validation</strong> messages if required form fields aren't completed
 * See hover and focus states for all <strong>interactive</strong> elements on the page
 * ~~View the optimal layout for the interface depending on their device's screen size~~
 ### Screenshots
@@ -41,6 +41,8 @@ Personal Finance App [Frontend Mentor Challenge](https://www.frontendmentor.io/c
 ![image](https://github.com/user-attachments/assets/d3bb1247-ff23-4e5c-8ab0-0e4810a20417)
 
 ![image](https://github.com/user-attachments/assets/7e8db204-2a95-497d-bc07-02972d73bfaa)
+
+![image](https://github.com/user-attachments/assets/1d50dbf4-0c72-4d7e-8631-6c3d97557f68)
 
 ![image](https://github.com/user-attachments/assets/124885df-f348-44b2-a6bf-6918bf54b090)
 
